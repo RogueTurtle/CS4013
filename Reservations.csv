@@ -1,1 +1,1 @@
-RestaurantId,ReservationId,numPeople,date,time,tableNo,customerId
+RestaurantId,tableNo,name,phone number,numPeople,date,time
