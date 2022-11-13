@@ -35,6 +35,7 @@ public class Menu {
         allMeals.add(newMeal);
     }
 
+    //Removes meals when the name of the meal is specified
     public void removeMeal(String meal) {
         ArrayList<Food> allMealsTemp = new ArrayList<>(allMeals);
         for(Food food : allMealsTemp) {
