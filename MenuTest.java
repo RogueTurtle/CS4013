@@ -13,9 +13,10 @@ public class MenuTest {
 
         menu.addMeal("Porridge", "Starter", "Our fine porridge", 10);
 
-        System.out.println(menu.getStarters());
-        menu.removeMeal("Porridge");
-        System.out.println(menu.getStarters());
+       // System.out.println(menu.getStarters());
+        //menu.removeMeal("Porridge");
+        //System.out.println(menu.getStarters());
+        System.out.println(menu);
 
 
     }

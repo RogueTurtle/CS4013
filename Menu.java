@@ -69,4 +69,13 @@ public class Menu {
     public String getDessert() { //Used to be of type Arraylist<Food>
         return "Dessert: " + dessert;
     }
+
+    @Override
+    public String toString() {
+        return  "Menu: " + "\n" +
+                "Starters: " + starters + "\n" +
+                "Soups: " + soups +"\n" +
+                "Main Course: " + main_course +"\n" +
+                "Dessert: " + dessert;
+    }
 }
