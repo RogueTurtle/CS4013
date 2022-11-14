@@ -54,6 +54,7 @@ public class Menu {
         }
     }
 
+    //Used to be of type Arraylist<Food>
     public String getStarters() {
         return "Starters: " + starters;
     }
@@ -65,9 +66,13 @@ public class Menu {
     public String getMainCourse() {
         return "Main Course: " + main_course;
     }
-
-    public String getDessert() { //Used to be of type Arraylist<Food>
+    
+    public String getDessert() {
         return "Dessert: " + dessert;
+    }
+
+    public ArrayList<Food> getAllMeals() {
+        return allMeals;
     }
 
     @Override
