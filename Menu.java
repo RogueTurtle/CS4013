@@ -66,7 +66,7 @@ public class Menu {
     public String getMainCourse() {
         return "Main Course: " + main_course;
     }
-    
+
     public String getDessert() {
         return "Dessert: " + dessert;
     }
