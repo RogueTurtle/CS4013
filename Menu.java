@@ -1,3 +1,8 @@
+/**
+ * Made by Ahmed Abdalla
+ * Student: 21316333
+ */
+
 import java.util.ArrayList;
 
 public class Menu {
@@ -13,8 +18,8 @@ public class Menu {
     }
 
     //This method is used to add a meal to allMeals and into one of the specified categories
-    public void addMeal(String name, String type, String desc) {
-        Food newMeal = new Food(name, type, desc);
+    public void addMeal(String name, String type, String desc, double price) {
+        Food newMeal = new Food(name, type, desc, price);
 
         if(type.toUpperCase().contains("STARTER")) {
             starters.add(newMeal);
@@ -49,19 +54,19 @@ public class Menu {
         }
     }
 
-    public ArrayList<Food> getStarters() {
-        return starters;
+    public String getStarters() {
+        return "Starters: " + starters;
     }
 
-    public ArrayList<Food> getSoups() {
-        return soups;
+    public String getSoups() {
+        return "Soups: "  + soups;
     }
 
-    public ArrayList<Food> getMainCourse() {
-        return main_course;
+    public String getMainCourse() {
+        return "Main Course: " + main_course;
     }
 
-    public ArrayList<Food> getDessert() {
-        return dessert;
+    public String getDessert() { //Used to be of type Arraylist<Food>
+        return "Dessert: " + dessert;
     }
 }

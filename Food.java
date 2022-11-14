@@ -3,8 +3,9 @@ public class Food {
     private String name;
     private String type;
     private String description;
+    private double price;
 
-    public Food(String name, String type, String description) {
+    public Food(String name, String type, String description, double price) {
         if(type.toUpperCase().contains("STARTER")) {
             this.type = "STARTER";
         }
@@ -22,6 +23,7 @@ public class Food {
         }
         this.name = name;
         this.description = description;
+        this.price = price;
     }
 
     public String getName() {
@@ -30,6 +32,6 @@ public class Food {
 
     @Override
     public String toString() {
-        return name;
+        return name + ": €" + price;
     }
 }
