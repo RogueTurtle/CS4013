@@ -1,3 +1,5 @@
+package com.cs4013;
+
 public class Food {
 
     private String name;

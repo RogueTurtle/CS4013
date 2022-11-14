@@ -1,3 +1,5 @@
+package com.cs4013;
+
 //creates guest object
 public class Guests {
     private String name;
@@ -40,7 +42,7 @@ public class Guests {
     public int getRestId() {
         return restId;
     }
-    public String toString(){
-        return (getRestId()+ ","+ getTableId() + ","+ getName()+ "," + getGuestNum() + "," + getDate() + "," + getTime());
+    public String guestsToString(){
+        return (getRestId()+ ","+ getTableId() + ","+ getName()+ ","+getPhoneNum()+"," + getGuestNum() + "," + getDate() + "," + getTime());
     }
 }
