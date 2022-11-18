@@ -9,14 +9,8 @@ import java.util.ArrayList;
 public class Reservation {
     File resFile = new File("src/storage/Reservations.csv");
 
-    public static void main(String[] args) {
-        Reservation res = new Reservation();
-        res.guests("john", "today",12345,5,1,"now",1);
-        res.cancelation(12345);
-    }
-
     ArrayList<Guests> guestList = new ArrayList<Guests>();
-    public void guests(String name, String date, int phoneNum, int guestNum, int restId, String time, int tableId) {
+    public void addReservation(String name, String date, int phoneNum, int guestNum, int restId, String time, int tableId) {
         Guests guests = new Guests(name, date, phoneNum, guestNum, restId,time,tableId);
         guestList.add(guests);
         String[] guestString = guests.guestsToString().split(",");
