@@ -8,15 +8,10 @@ import java.util.ArrayList;
 
 public class Reservation {
     File resFile = new File("src/storage/Reservations.csv");
-
-    public static void main(String[] args) {
-        Reservation res = new Reservation();
-        res.guests("john", "today",12345,5,1,"now",1);
-        res.cancelation(12345);
-    }
+    File tableFile = new File("src/storage/Tables.csv");
 
     ArrayList<Guests> guestList = new ArrayList<Guests>();
-    public void guests(String name, String date, int phoneNum, int guestNum, int restId, String time, int tableId) {
+    public void addReservation(String name, String date, int phoneNum, int guestNum, int restId, String time, int tableId) {
         Guests guests = new Guests(name, date, phoneNum, guestNum, restId,time,tableId);
         guestList.add(guests);
         String[] guestString = guests.guestsToString().split(",");
@@ -65,7 +60,68 @@ public class Reservation {
 
     }
 
-    public void tables(int restId, String time, String date) {
+    public String tables(int restId, String time, String date) {
+        String line = "";
+        ArrayList<String> tableLines = new ArrayList<String>();
+        ArrayList<String> resLines = new ArrayList<String>();
+        String tablesString = "";
+        try {
+            FileReader tableFr = new FileReader(tableFile);
+            BufferedReader tableBr = new BufferedReader(tableFr);
+            while (tableBr.ready()) {
+                line = tableBr.readLine();
+                if (line.charAt(0) == restId) {
+                    tableLines.add(line);
+                }
+            }
+            tableBr.close();
+            
+            FileReader resFr = new FileReader(resFile);
+            BufferedReader resBr = new BufferedReader(resFr);
+            while (resBr.ready()) {
+                line = resBr.readLine();
+                if (line.charAt(0) == restId) {
+                    resLines.add(line);
+                }
+            }
+            resBr.close();
+
+            String dateString = "";
+            String timeString = "";
+            ArrayList<String> freeTablesID = new ArrayList<String>();
+
+            for (int i = 0; i < resLines.size() ; i++) {
+                String[] comp = resLines.get(i).split(",");
+                dateString = comp[5];
+                timeString = comp[6];
+                if (dateString != date || timeString != time) {
+                    freeTablesID.add(comp[1]);
+                }
+            }
+
+            ArrayList<String> freeTables = new ArrayList<String>();
+            for (int j = 0; j < freeTablesID.size(); j++) {
+                
+            
+            for (int i = 0; i < tableLines.size(); i++) {
+                String tableChar = Character.toString(tableLines.get(i).charAt(2));
+                if (tableChar == freeTablesID.get(j)) {
+                    freeTables.add(tableLines.get(i));
+                }
+            }}
+
+            
+        for (int i = 0; i < freeTables.size(); i++) {
+            tablesString += freeTables.get(i);
+            tablesString += ",\n";
+        }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         
+
+        return tablesString;
     }
 }
