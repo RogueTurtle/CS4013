@@ -34,7 +34,7 @@ public class Customer extends Person{
     }
 
     public void viewTables(int restId, String time, String date) {
-        //TODO add functionality
+        res.tables(restId, time, date);
     }
 
     public void order() {
