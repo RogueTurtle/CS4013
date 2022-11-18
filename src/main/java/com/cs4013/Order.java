@@ -12,6 +12,7 @@ public class Order {
 
     //Can only be Created, Waiting, Cancelled
     private String status;
+    private double price;
     private ArrayList<Food> foodsOrdered = new ArrayList<>();
     private double moneyRequired; //May be needed not sure yet
     private Menu menu;
@@ -50,4 +51,7 @@ public class Order {
         }
     }
 
+    public double getPrice() {
+        return price;
+    }
 }
