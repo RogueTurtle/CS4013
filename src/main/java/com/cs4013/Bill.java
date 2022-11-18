@@ -13,7 +13,6 @@ public class Bill {
      **/
 
     private String receipt;
-    private Order order; //Pulling the order from the Order class
     private double price;
     private String payMethod;
     double tipAmount;
@@ -25,9 +24,8 @@ public class Bill {
 
     public Bill(Order order, String payMethod) {
 
-        this.order = order;
         this.payMethod = payMethod;
-        this.order = order.getPrice(); //Would need a getPrice method in the order class
+        price = order.getPrice(); //Would need a getPrice method in the order class
     }
 
 
@@ -40,6 +38,16 @@ public class Bill {
     }
 
     public double payment() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("DO you want to add a tip? y/n: ");
+        String tip = scan.nextLine();
+        if (tip == "y"|| tip == "Y") {
+            System.out.println("Home much would you like to tip");
+            tipAmount = scan.nextDouble();
+            scan.close();
+        } else {
+            tipAmount = 0;
+        }
         if (Objects.equals(payMethod, "Cash")) {
             price = price + tipAmount;
             if (price < 0) {

@@ -13,7 +13,7 @@ public class Order {
     //Can only be Created, Waiting, Cancelled
     private String status;
     private ArrayList<Food> foodsOrdered = new ArrayList<>();
-    private double moneyRequired; //May be needed not sure yet
+    //private double moneyRequired; //May be needed not sure yet
     private Menu menu;
 
     public Order(Menu menu) {
@@ -33,9 +33,14 @@ public class Order {
         }
     }
 
+    public double getPrice() {
+    //TODO complete method to return total order price
+        return 0;
+    }
+    //you were changing only changes the local status that you created input into the method which is seperate from the datafield
     //Trying to make changing statuses flexible
-    public void changeStatus(String status) {
-        String newStatus = status.toUpperCase();
+    public void changeStatus(String newStatus) {
+        newStatus = status.toUpperCase(); 
         if(newStatus.contains("CREATE") || newStatus.contains("MADE") || newStatus.contains("ORDERED")) {
             this.status = "CREATED";
         }

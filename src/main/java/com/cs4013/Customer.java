@@ -37,7 +37,7 @@ public class Customer extends Person{
         res.tables(restId, time, date);
     }
 
-    public void order() {
+    public Order order() {
         Order order = new Order(men);
         String quit = "";
         Scanner scan = new Scanner(System.in);
@@ -52,10 +52,12 @@ public class Customer extends Person{
                 order.addFood(foodString);
             }
         }
+        return order;
     }
 
-    public void viewBill() {
-        //TODO add functionality once bill class is created
+    public void getBill(String paymentMethod) {
+        Bill bill = new Bill(order(), paymentMethod);
+        bill.getReceipt();
     }
 
     @Override
