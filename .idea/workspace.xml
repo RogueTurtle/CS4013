@@ -5,14 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d69447a-bd0d-4621-b07b-90ae5f678353" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Bill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Bill.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Bill.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/CS4013.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Food.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Food.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Guests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Guests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Reservation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Reservation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Staff.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Staff.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,6 +54,26 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cs4013.Login" />
+      <module name="project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cs4013.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Login" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

@@ -27,7 +27,7 @@ public class Bill {
 
         this.order = order;
         this.payMethod = payMethod;
-        this.order = order.getPrice(); //Would need a getPrice method in the order class
+        //this.order = order.getPrice(); //Would need a getPrice method in the order class
         //Stephen this is bugged - getPrice is double
     }
 
