@@ -22,26 +22,16 @@ public class Menu {
 
     //This method is used to add a meal to allMeals and into one of the specified categories
     public void addMeal(String name, String type, String desc, double price) {
-        Food newMeal = new Food(name, type, desc, price);
-
-        if(type.toUpperCase().contains("STARTER")) {
-            starters.add(newMeal);
-        }
-        else if(type.toUpperCase().contains("SOUP")) {
-            soups.add(newMeal);
-        }
-        else if(type.toUpperCase().contains("MAIN")) {
-            main_course.add(newMeal);
-        }
-        else if(type.toUpperCase().contains("DESSERT")) {
-            dessert.add(newMeal);
-        }
-        else {
+        try {
+            Food newMeal = new Food(name, type, desc, price);
+            allPrices += price;
+            allMeals.add(newMeal);
+            System.out.println("success");
+        } catch (RuntimeException e){
             //Apparently not needed so can remove since I have exception in Food already
+            // (Aaron) - Exception displays a different message here so you can still leave it in, the huge if else statement was redundant though.
             throw new RuntimeException("Error, the meal does not fit into any of the categories. Please specify the category");
         }
-        allPrices += price;
-        allMeals.add(newMeal);
     }
 
     //Removes meals when the name of the meal is specified
