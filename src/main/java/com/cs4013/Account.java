@@ -42,7 +42,6 @@ public class Account {
                }
                else {
                    System.out.println("Error, incorrect username of password");
-                   loggedIn = false;
                }
            }
            br.close();
