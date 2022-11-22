@@ -65,6 +65,6 @@ public class Customer extends Person{
         return super.getName();
     }
     public int getPhoneNum() {
-        return phoneNum;
+        return super.getPhoneNum();
     }
 }
