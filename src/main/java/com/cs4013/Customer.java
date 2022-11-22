@@ -8,21 +8,23 @@ package com.cs4013;
 import java.util.Scanner;
 
 public class Customer extends Person{
+    private int phoneNum;
 
     Reservation res = new Reservation();
     Menu men = new Menu();
-    Customer(String name) {
+    Customer(String name, int phoneNum) {
         super(name);
+        this.phoneNum = phoneNum;
     }
 
     public static void main(String[] args) {
-        Customer customer = new Customer("John");
-        customer.addReservation("today",12345,5,1,"now",1);
+        Customer customer = new Customer("John", 12345);
+        customer.addReservation("today",5,1,"now",1);
         customer.cancelation(12345);
     }
 
-    public void addReservation(String date, int phoneNum, int guestNum, int restId, String time, int tableId) {
-        res.addReservation(getName(), date, phoneNum, guestNum, restId, time, tableId);
+    public void addReservation(String date, int guestNum, int restId, String time, int tableId) {
+        res.addReservation(getName(), date, getPhoneNum(), guestNum, restId, time, tableId);
     }
 
     public void cancelation(int phoneNum) {
@@ -63,5 +65,8 @@ public class Customer extends Person{
     @Override
     public String getName() {
         return super.getName();
+    }
+    public int getPhoneNum() {
+        return phoneNum;
     }
 }
