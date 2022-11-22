@@ -8,13 +8,11 @@ package com.cs4013;
 import java.util.Scanner;
 
 public class Customer extends Person{
-    private int phoneNum;
 
     Reservation res = new Reservation();
     Menu men = new Menu();
     Customer(String name, int phoneNum) {
-        super(name);
-        this.phoneNum = phoneNum;
+        super(name, phoneNum);
     }
 
     public static void main(String[] args) {
