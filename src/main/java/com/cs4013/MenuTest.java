@@ -19,7 +19,7 @@ public class MenuTest {
 
         System.out.println(menu.getMainCourse());
         System.out.println();
-       // System.out.println(menu.getStarters());
+       //System.out.println(menu.getStarters());
         //menu.removeMeal("Porridge");
         //System.out.println(menu.getStarters());
         System.out.println(menu);
