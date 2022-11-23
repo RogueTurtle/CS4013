@@ -56,7 +56,4 @@ public class Order {
         }
     }
 
-    public double getPrice() {
-        return price;
-    }
 }
