@@ -14,9 +14,10 @@ public class Menu {
     private ArrayList<Food> main_course = new ArrayList<>();
     private ArrayList<Food> dessert = new ArrayList<>();
     private ArrayList<Food> allMeals = new ArrayList<>();
+    private double allPrices;
 
     public Menu() {
-
+        allPrices = 0;
     }
 
     //This method is used to add a meal to allMeals and into one of the specified categories
@@ -39,6 +40,7 @@ public class Menu {
             //Apparently not needed so can remove since I have exception in Food already
             throw new RuntimeException("Error, the meal does not fit into any of the categories. Please specify the category");
         }
+        allPrices += price;
         allMeals.add(newMeal);
     }
 
@@ -52,8 +54,13 @@ public class Menu {
                 main_course.remove(food);
                 dessert.remove(food);
                 allMeals.remove(food);
+                allPrices -= food.getPrice();
             }
         }
+    }
+
+    public double getAllPrices() {
+        return allPrices;
     }
 
     //Used to be of type Arraylist<Food>
