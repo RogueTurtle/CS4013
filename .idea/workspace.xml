@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d69447a-bd0d-4621-b07b-90ae5f678353" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/MenuTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/MenuTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/storage/Menu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/Menu.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/storage/Reservations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/Reservations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Food.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Food.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/OrderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/OrderTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Food.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +143,7 @@
       <workItem from="1668811248532" duration="172000" />
       <workItem from="1668874659100" duration="8552000" />
       <workItem from="1668893895398" duration="9000" />
-      <workItem from="1669230012093" duration="2898000" />
+      <workItem from="1669230012093" duration="3108000" />
     </task>
     <servers />
   </component>
