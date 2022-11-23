@@ -1,0 +1,2 @@
+Name, Password, Phone Number, Authority Level, ID (name + "_" + phoneNum)
+aaron,verySecurePassword123,0852671234,OWNER,aaron_0852671234

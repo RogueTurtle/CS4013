@@ -38,7 +38,7 @@ public class Customer extends Person{
     }
 
     public Order order() {
-        Order order = new Order(men);
+        Order order = new Order();
         String quit = "";
         Scanner scan = new Scanner(System.in);
         String foodString = "";

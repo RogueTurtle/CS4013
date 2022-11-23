@@ -7,8 +7,8 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class Reservation {
-    File resFile = new File("src/storage/Reservations.csv");
-    File tableFile = new File("src/storage/Tables.csv");
+    File resFile = new File("src/storage/reservations.csv");
+    File tableFile = new File("src/storage/tables.csv");
 
     ArrayList<Guests> guestList = new ArrayList<Guests>();
     public void addReservation(String name, String date, int phoneNum, int guestNum, int restId, String time, int tableId) {

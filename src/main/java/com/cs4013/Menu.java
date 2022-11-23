@@ -1,85 +1,43 @@
 package com.cs4013;
 
-/**
- * Made by Ahmed Abdalla
- * Student: 21316333
- */
-
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 
-public class Menu {
+public class Menu  {
 
-    private ArrayList<Food> starters = new ArrayList<>();
-    private ArrayList<Food> soups = new ArrayList<>();
-    private ArrayList<Food> main_course = new ArrayList<>();
-    private ArrayList<Food> dessert = new ArrayList<>();
-    private ArrayList<Food> allMeals = new ArrayList<>();
-    private double allPrices;
+    private File menu = new File("src/storage/menus.csv");
+    private Account account;
+    private HubInterface mainHub;
 
-    public Menu() {
-        allPrices = 0;
+    public Menu (Account account, HubInterface mainHub) {
+        this.account = account;
+        this.mainHub = mainHub;
     }
 
-    //This method is used to add a meal to allMeals and into one of the specified categories
-    public void addMeal(String name, String type, String desc, double price) {
-        try {
-            Food newMeal = new Food(name, type, desc, price);
-            allPrices += price;
-            allMeals.add(newMeal);
-            System.out.println("success");
-        } catch (RuntimeException e){
-            //Apparently not needed so can remove since I have exception in Food already
-            // (Aaron) - Exception displays a different message here so you can still leave it in, the huge if else statement was redundant though.
-            throw new RuntimeException("Error, the meal does not fit into any of the categories. Please specify the category");
-        }
-    }
+    public void printMenu () {
 
-    //Removes meals when the name of the meal is specified
-    public void removeMeal(String meal) {
-        ArrayList<Food> allMealsTemp = new ArrayList<>(allMeals);
-        for(Food food : allMealsTemp) {
-            if(food.getName().equals(meal)) {
-                starters.remove(food);
-                soups.remove(food);
-                main_course.remove(food);
-                dessert.remove(food);
-                allMeals.remove(food);
-                allPrices -= food.getPrice();
+        String line = "";
+        String lineRestaurant = "";
+        String[] lineArray = new String[0];
+        ArrayList<String> currentReservations = new ArrayList<>();
+
+        try (FileReader fileRead = new FileReader(menu);
+             BufferedReader bufferRead = new BufferedReader(fileRead);) {
+            bufferRead.readLine();
+            while (bufferRead.ready()) {
+                line = bufferRead.readLine();
+                lineRestaurant = line.substring(0, line.indexOf(","));
+                if (Integer.parseInt(lineRestaurant) == (account.getRestaurantID())) {
+                    System.out.println(line);
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }
+        System.out.println();
+        mainHub.options(account);
 
-    public double getAllPrices() {
-        return allPrices;
-    }
-
-    //Used to be of type Arraylist<Food>
-    public String getStarters() {
-        return "Starters: " + starters;
-    }
-
-    public String getSoups() {
-        return "Soups: "  + soups;
-    }
-
-    public String getMainCourse() {
-        return "Main Course: " + main_course;
-    }
-
-    public String getDessert() {
-        return "Dessert: " + dessert;
-    }
-
-    public ArrayList<Food> getAllMeals() {
-        return allMeals;
-    }
-
-    @Override
-    public String toString() {
-        return  "Menu: " + "\n" +
-                "Starters: " + starters + "\n" +
-                "Soups: " + soups +"\n" +
-                "Main Course: " + main_course +"\n" +
-                "Dessert: " + dessert;
     }
 }

@@ -1,0 +1,28 @@
+RestaurantID, Item Name, Item Price, Type
+1,Chicken Wings,4.50,STARTER
+1,Chicken Soup,4.00,STARTER
+1,Vegetable Soup,3.75,STARTER
+1,Breadsticks,2.25,STARTER
+1,Burger,6.75,MAIN
+1,Cheese Pizza,8.50,MAIN
+1,Pepperoni Pizza,9.00,MAIN
+1,Meat Feast Pizza,10.25,MAIN
+1,Spaghetti Bolognese,7.75,MAIN
+1,Chicken Curry & Rice,8.75,MAIN
+1,Ice Cream,4.00,DESSERT
+1,Chocolate Cake,5.25,DESSERT
+1,Strawberries & Cream,5.00,DESSERT
+2,Chicken Wings,4.50,STARTER
+2,Chicken Noodle Soup,4.25,STARTER
+2,Vegetable Soup,3.75,STARTER
+2,Bowl Of Rice,1.75,STARTER
+2,Burger,6.75,MAIN
+2,Cheese Pizza,8.50,MAIN
+2,Pepperoni Pizza,9.00,MAIN
+2,Pineapple Pizza,9.50,MAIN
+2,Spaghetti Bolognese,7.75,MAIN
+2,Chicken Curry & Chips,9.00,MAIN
+2,Ice Cream,4.00,DESSERT
+2,Chocolate Cake,5.25,DESSERT
+2,Strawberries & Cream,5.00,DESSERT
+2,Super Duper Ultimate Chocolate Supreme,39.99,DESSERT

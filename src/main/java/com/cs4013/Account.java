@@ -1,171 +1,312 @@
 package com.cs4013;
-//Author - Ahmed Abdalla - 21316333
 
 import java.io.*;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Account {
-   private File loginFile;
-   private String name;
-   private String password;
-   private boolean loggedIn = false;
-   private int level; //0 = guest, 1 = customer/user, 2 = staff, 3 = manager, 4 = owner
 
-    public Account() {
-        loginFile = new File("src/storage/Login.csv");
+    private int restaurantID;
+    private String name;
+    private String password;
+    private String phoneNum;
+    private String authority;
+    private String customerID;
+    private Scanner scanner = new Scanner(System.in);
+    private File accounts = new File("src/storage/accounts.csv");
+    private HubInterface mainHub;
+
+    /** Constructor for Account.
+     *
+     * @param mainHub Used to direct to MainHub at some point in the program.
+     * @param restaurantID The restaurant ID to be set for future use.
+     * @throws FileNotFoundException
+     */
+    public Account (HubInterface mainHub, int restaurantID) throws FileNotFoundException {
+        this.mainHub = mainHub;
+        this.restaurantID = restaurantID;
     }
 
-    public static void main(String[] args) {
-        Account account = new Account();
-        Account account2 = new Account();
-        account.login();
-        account2.createAccount();
-        account.setLevel(account2, 4);
+    /**
+     * Prompts the user with questions required to log them into their account.
+     */
+    public void login () {
+
+        // prompt them with "Username: ", check that username exists in accounts.csv
+        // if exists, prompt password and check that password matches.
+        // if matches, set this object's details to the details in the csv
+        int nameLine;
+        String username = "";
+        String[] information;
+
+        do {
+            System.out.println("LOG-IN\n" + "------------------");
+            username = prompt("Username: ");
+            nameLine = checkNameExists(username);
+            if (nameLine >= 0) {
+                break;
+            }
+            System.out.printf("Username \"%s\" is invalid. Please try again.\n", username);
+        } while (true);
+        information = comparePassword(username, nameLine);
+        loginSuccess(information);
+
     }
 
-   public void login() {
-        loggedIn = false;
-        enterUsernamePasswordPrompt();
-        try {
-           String line = "";
-           BufferedReader br = new BufferedReader(new FileReader("src/storage/Login.csv"));
+    /** Checks whether a username is already taken on the system.
+     *
+     * @param username Inputted username.
+     * @return An integer value used to determine either a false value (name doesn't exist),
+     * or a positive value that indicates the line the name exists on.
+     */
+    private int checkNameExists (String username) {
 
-           while((line = br.readLine()) != null) {
-               String[] logins = line.split(",");
-               System.out.println("Username: " + logins[0] + " Password: " + logins[1]);
-               if(name.equalsIgnoreCase(logins[0]) && password.equals(logins[1])) {
-                    loggedIn = true;
-                    this.name = name;
-                    this.password = password;
-                    this.level = Integer.parseInt(logins[2]);
-                    break; //or could add "&& !loggedIn" to while loop
-               }
-               else {
-                   System.out.println("Error, incorrect username of password");
-               }
-           }
-           br.close();
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
+        int i = 0;
+        String[] line;
 
-   }
+        try (FileReader fileRead = new FileReader(accounts);
+             BufferedReader bufferRead = new BufferedReader(fileRead)) {
+            bufferRead.readLine();
+            while (bufferRead.ready()) {
+                i++;
+                line = bufferRead.readLine().split(",");
+                if (username.equalsIgnoreCase(line[0])) {
+                    return i;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return -1;
 
-   public void createAccount() {
-       enterUsernamePasswordPrompt();
-       try {
-           //FileOutputStream fos = new FileOutputStream(loginFile, true);
-           FileWriter out = new FileWriter(loginFile, true);
-           String line = "";
-           BufferedReader br = new BufferedReader(new FileReader("src/storage/Login.csv"));
-           boolean alreadyExists = false;
-
-           while((line = br.readLine()) != null) {
-               String[] logins = line.split(",");
-               if(name.equalsIgnoreCase(logins[0])) {
-                   System.out.println("Username already exists");
-                   alreadyExists = true;
-                   break;
-               }
-           }
-           if(!alreadyExists) {
-               out.append(System.getProperty("line.separator") + name + "," + password + ",1");
-               this.name = name;
-               this.password = password;
-               level = 1;
-           }
-           br.close();
-           out.close();
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
-   }
-
-    public boolean isLoggedIn() {
-        return loggedIn;
     }
 
-    public void enterUsernamePasswordPrompt() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Enter Username:");
-        name = scan.next();
-        System.out.println("Enter Password:");
-        password = scan.next();
+
+    /** Checks the stored password for a username and prompts the user to
+     * correctly input the password to proceed.
+     *
+     * @param username Inputted username.
+     * @param nameLine The line in the accounts.csv file the name is located.
+     * @return String array containing all relevant information about user.
+     */
+    private String[] comparePassword (String username, int nameLine) {
+
+        String line = "";
+        String[] information;
+
+        try (FileReader fileRead = new FileReader(accounts);
+             BufferedReader bufferRead = new BufferedReader(fileRead)) {
+            bufferRead.readLine();
+            for (int i = 0; i < nameLine - 1; i++) {
+                bufferRead.readLine();
+            }
+            line = bufferRead.readLine();
+            information = line.split(",");
+            while (true) {
+                line = prompt("Password: ");
+                if (line.equals(information[1])) {
+                    return information;
+                }
+                System.out.println("--- Invalid password, please try again. ---");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new String[]{"unverified"};
     }
 
-    public void setLevel(Account account, int level) {
-        //If owner(level 4)
+    /** Sets account's values and directs user to the main hub.
+     *
+     * @param information A string array containing all details about user.
+     */
+    private void loginSuccess (String[] information) {
 
-        if(isLoggedIn() && level == 4) {
+        this.name = information[0];
+        this.password = information[1];
+        this.phoneNum = information[2];
+        this.authority = information[3];
+        this.customerID = (information[0] + "_" + information[2]);
 
+        mainHub.options(this);
+
+    }
+
+    /**
+     * Prompts the user with multiple questions and uses information from responses
+     * to add a new account to the system.
+     */
+    public void signUp () {
+
+        String username = validateUsername();
+        String phoneNum = validatePhoneNumber();
+        String password = validatePassword();
+        addAccount(username, password, phoneNum);
+
+    }
+
+    /**
+     *
+     * @param username Username of new account.
+     * @param password Password of new account.
+     * @param phoneNum Phone number of new account.
+     */
+    private void addAccount (String username, String password, String phoneNum) {
+
+        String csvLine = String.format("%s,%s,%s,CUSTOMER,%s_%s", username, password, phoneNum, username, phoneNum);
+
+        try (FileWriter fileWrite = new FileWriter(accounts, true)) {
+            fileWrite.write("\n" + csvLine);
+            System.out.println(csvLine);
+            String[] information = { username, password, phoneNum, "CUSTOMER" };
+            loginSuccess(information);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /** Validates whether a username is acceptable.
+     *
+     * @return Valid username.
+     */
+    private String validateUsername () {
+
+        String username = "";
+        String[] line;
+        boolean taken = false;
+
+        try (FileReader fileRead = new FileReader(accounts);
+             BufferedReader bufferRead = new BufferedReader(fileRead)) {
+            bufferRead.readLine();
+            while (true) {
+                System.out.println("SIGN-UP\n" + "------------------");
+                username = prompt("Username (3-20 characters): ").toLowerCase();
+                if (username.length() < 3 || username.length() > 20) {
+                    System.out.println("--- Invalid username, please try again. ---");
+                    continue;
+                }
+                if (checkNameExists(username) == -1) {
+                    return username;
+                }
+                System.out.println("--- Username already taken, please try again. ---");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+
+    }
+
+    /** Validates whether a password is acceptable.
+     *
+     * @return Valid password.
+     */
+    private String validatePassword () {
+
+        String password = "";
+
+        while (true) {
+            password = prompt("""
+                Password must contain at least:
+                - 8 characters.
+                - 1 lowercase letter.
+                - 1 uppercase letter.
+                - 1 number.
+                
+                Enter password:\040""");
+            if (Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(.+){8,}$", password)) {
+                return password;
+            }
+            System.out.println("--- Invalid password, please try again. ---");
+        }
+
+    }
+
+    /** Validates whether a phone number is acceptable.
+     *
+     * @return Valid phone number.
+     */
+    private String validatePhoneNumber () {
+
+        String phoneNum = "";
+
+        while (true) {
+            phoneNum = prompt("Phone number (used for reservations): ").replaceAll(" ", "");
             try {
-                String line = "";
-                BufferedReader br = new BufferedReader(new FileReader("src/storage/Login.csv"));
-
-                while((line = br.readLine()) != null) {
-                    String[] logins = line.split(",");
-                    if(account.name.equalsIgnoreCase(logins[0]) && Integer.toString(account.level).equals(logins[2])) {
-                        account.level = level;
-                        editCSV(logins[2], Integer.toString(level));
-                        break;
-                    }
-                }
-                br.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+                Long validPhoneNumber = Long.parseLong(phoneNum);
+                return phoneNum;
+            } catch (NumberFormatException e) {
+                System.out.println("--- Invalid phone number, please enter digits only. ---");
             }
         }
-        else {
-            System.out.println("Error, you do not have permission to promote/demote accounts");
-        }
+
     }
 
-    public void editCSV(String editTerm, String newTerm) {
-        String tempFilePath = "src/storage/loginTemp.csv";
-        File newFile = new File(tempFilePath);
-        File oldFile = loginFile;
-
-        String name;
-        String password;
-        String level;
-
-        try {
-            FileWriter fileWriter = new FileWriter(tempFilePath, true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            PrintWriter printWriter = new PrintWriter(bufferedWriter);
-            Scanner scan = new Scanner(new File("src/storage/Login.csv"));
-            scan.useDelimiter("[,\n]");
-
-            while(scan.hasNext()) {
-                name = scan.next();
-                password = scan.next();
-                level = scan.next();
-
-            if(level.equals(editTerm)) {
-                    printWriter.print(name + "," + password + "," + newTerm + "\n");
-                }
-               else {
-                    printWriter.print(name + "," + password + "," + level + "\n");
-                }
-            }
-            scan.close();
-            printWriter.flush();
-            printWriter.close();
-            bufferedWriter.close();
-            oldFile.delete();
-            //System.out.println("The file has deleted: " + loginFile.delete()); //debug
-            File dump = new File("src/storage/Login.csv"); //rename works if not in the same folder
-            newFile.renameTo(dump);
-
-            loginFile = newFile;
-
-        }
-        catch (Exception e) {
-
-        }
+    /** Promotes a user's authority level (can only be called by OWNER).
+     *
+     * @param username Username of user to be promoted.
+     * @param promotion Level to promote user to ("CHEF", "FRONT_STAFF", "OWNER")
+     * @return
+     */
+    private boolean promoteUser (String username, String promotion) {
+        return true;
     }
 
-    public void deleteAccount() {
+    /** Prompts the user with a question and returns a trimmed string input.
+     *
+     * @param prompt A question to prompt the user.
+     * @return A trimmed string inputted by the user.
+     */
+    private String prompt (String prompt) {
+        System.out.print(prompt);
+        return scanner.nextLine().trim();
+    }
 
+    /** Returns the current username.
+     *
+     * @return The current username.
+     */
+    public String getName () {
+        return name;
+    }
+
+    /** Returns the current password.
+     *
+     * @return The current password.
+     */
+    public String getPassword () {
+        return password;
+    }
+
+    /** Returns the current phone number.
+     *
+     * @return The current phone number.
+     */
+    public String getPhoneNum () {
+        return phoneNum;
+    }
+
+    /** Returns the current authority level.
+     *
+     * @return The current authority level.
+     */
+    public String getAuthority () {
+        return authority;
+    }
+
+    /** Returns the current customerID.
+     *
+     * @return The current customerID.
+     */
+    public String getCustomerID() {
+        return customerID;
+    }
+
+    /** Returns the current restaurant ID.
+     *
+     * @return The current restaurant ID.
+     */
+    public int getRestaurantID () {
+        return restaurantID;
     }
 }
