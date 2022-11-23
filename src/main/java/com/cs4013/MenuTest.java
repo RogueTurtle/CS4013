@@ -9,13 +9,17 @@ package com.cs4013;
 public class MenuTest {
 
     public static void main(String[] args) {
-        Menu menu = new Menu();
+        Menu menu = new Menu(1);
 
         System.out.println(menu.getStarters());
         System.out.println();
 
-        menu.addMeal("Porridge", "Starter", "Our fine porridge", 10);
-        menu.addMeal("Chicken", "Main", "Our fine porridge", 10);
+        menu.addMeal("Porridge", "Starter", 10);
+        menu.addMeal("Porridge", "Starter", 10);
+        menu.addMeal("Porridge", "Starter", 10);
+        menu.addMeal("Porridge", "Starter", 10);
+        menu.addMeal("Chicken", "Main", 10);
+       // menu.addMeal("Chicken", "Main", 10);
 
         System.out.println(menu.getMainCourse());
         System.out.println();

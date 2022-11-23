@@ -7,7 +7,7 @@ public class Food {
     private String description;
     private double price;
 
-    public Food(String name, String type, String description, double price) {
+    public Food(String name, String type, double price) {
         if(type.toUpperCase().contains("STARTER")) {
             this.type = "STARTER";
         }
@@ -24,7 +24,6 @@ public class Food {
             throw new RuntimeException("Error: Food not added as no adequate type was stated.");
         }
         this.name = name;
-        this.description = description;
         this.price = price;
     }
 
