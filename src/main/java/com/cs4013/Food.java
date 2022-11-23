@@ -7,7 +7,7 @@ public class Food {
     private String description;
     private double price;
 
-    public Food(String name, String type, double price) {
+    protected Food(String name, String type, double price) {
         if(type.toUpperCase().contains("STARTER")) {
             this.type = "STARTER";
         }
@@ -25,7 +25,7 @@ public class Food {
         this.price = price;
     }
 
-    public String getName() {
+    protected String getName() {
         return name;
     }
 
@@ -34,7 +34,7 @@ public class Food {
         return name + ": €" + price;
     }
 
-    public double getPrice() {
+    protected double getPrice() {
         return price;
     }
 }

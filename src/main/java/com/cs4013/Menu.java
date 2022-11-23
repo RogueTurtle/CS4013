@@ -18,6 +18,11 @@ public class Menu {
 
     public Menu(int restaurantID) {
         this.restaurantID = restaurantID;
+        searchForMenu(restaurantID);
+
+    }
+
+    private void searchForMenu(int restaurantID) {
         try {
             String line;
             BufferedReader br = new BufferedReader(new FileReader("src/storage/Menu.csv"));
@@ -32,11 +37,6 @@ public class Menu {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-    }
-
-    public void lookForMenu() {
-
     }
 
     //This method is used to add a meal to allMeals and into one of the specified categories
@@ -81,6 +81,10 @@ public class Menu {
             allMeals.add(newMeal);
         }
 
+        addToCSV(name, type, price);
+    }
+
+    private void addToCSV(String name, String type, double price) {
         try {
             FileWriter out = new FileWriter("src/storage/Menu.csv", true);
             String line = "";
@@ -153,7 +157,7 @@ public class Menu {
                 "Dessert: " + dessert;
     }
 
-    public void deleteFromCSV(String removeTerm) {
+    private void deleteFromCSV(String removeTerm) {
         File tempFile = new File("src/storage/menuTemp.csv");
         File realFile = new File("src/storage/Menu.csv");
         String line = "";
