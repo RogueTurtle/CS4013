@@ -30,7 +30,7 @@ public class Bill {
     public Bill(Order order, String payMethod) {
 
         this.payMethod = payMethod;
-        price = order.getPrice(); //Would need a getPrice method in the order class
+        //price = order.getPrice(); //Would need a getPrice method in the order class
     }
 
 
