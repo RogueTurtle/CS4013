@@ -1,5 +1,9 @@
 package com.cs4013;
-//Author - Ahmed Abdalla - 21316333
+/**
+ * Made by Ahmed Abdalla
+ * Student: 21316333
+ */
+
 
 import java.io.*;
 import java.util.Scanner;

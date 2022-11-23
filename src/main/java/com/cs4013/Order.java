@@ -45,7 +45,7 @@ public class Order {
         if(newStatus.contains("CREATE") || newStatus.contains("MADE") || newStatus.contains("ORDERED")) {
             this.status = "CREATED";
         }
-        else if(newStatus.contains("WAIT") || newStatus.contains("MADE") || newStatus.contains("TRANSIT")) {
+        else if(newStatus.contains("WAIT") || newStatus.contains("MAKING") || newStatus.contains("TRANSIT")) {
             this.status = "WAITING";
         }
         else if(newStatus.contains("CANCEL") || newStatus.contains("STOP") || newStatus.contains("ABORT")) {
@@ -54,9 +54,5 @@ public class Order {
         else {
             throw new RuntimeException("Error, status not valid");
         }
-    }
-
-    public double getPrice() {
-        return price;
     }
 }
