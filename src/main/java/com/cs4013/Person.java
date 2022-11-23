@@ -9,17 +9,23 @@ package com.cs4013;
 public class Person {
 
     private String name;
+    private int phoneNum;
 
     public Person() {
         
     }
 
-    public Person(String name) {
+    public Person(String name, int phoneNum) {
         this.name = name;
+        this.phoneNum = phoneNum;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getPhoneNum() {
+        return phoneNum;
     }
 
 }
