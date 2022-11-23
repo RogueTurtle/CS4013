@@ -17,6 +17,7 @@ public class Order {
     public Order(Menu menu) {
         this.menu = menu;
         totalPrice = 0;
+        status = "CREATED";
     }
 
     public Order(Menu menu, ArrayList<Food> foodsOrdered) {
@@ -57,6 +58,7 @@ public class Order {
     @Override
     public String toString() {
         return "Order: " + foodsOrdered + "\n" +
+                "Status: " + status + "\n" +
                 "Total Price: " + totalPrice;
     }
 }
