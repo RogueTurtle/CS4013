@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d69447a-bd0d-4621-b07b-90ae5f678353" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Bill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Food.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/MenuTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/MenuTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Order.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Bill.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Bill.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Food.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Food.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
