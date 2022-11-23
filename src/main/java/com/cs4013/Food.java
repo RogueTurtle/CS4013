@@ -40,4 +40,10 @@ public class Food {
     public String toString() {
         return name + ": €" + price;
     }
+
+    public double getPrice() {
+        return price;
+    }
 }
+
+

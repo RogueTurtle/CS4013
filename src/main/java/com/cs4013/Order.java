@@ -1,5 +1,3 @@
-package com.cs4013;
-
 import java.util.ArrayList;
 
 /**
@@ -12,13 +10,13 @@ public class Order {
 
     //Can only be Created, Waiting, Cancelled
     private String status;
-    private double price;
     private ArrayList<Food> foodsOrdered = new ArrayList<>();
-    //private double moneyRequired; //May be needed not sure yet
+    private double totalPrice; //May be needed not sure yet
     private Menu menu;
 
     public Order(Menu menu) {
         this.menu = menu;
+        totalPrice = 0;
     }
 
     public Order(Menu menu, ArrayList<Food> foodsOrdered) {
@@ -30,22 +28,18 @@ public class Order {
         for(Food food : menu.getAllMeals()) {
             if(food.getName().equals(foodName)) {
                 foodsOrdered.add(food);
+                totalPrice += food.getPrice();
             }
         }
     }
 
-    public double getPrice() {
-    //TODO complete method to return total order price
-        return 0;
-    }
-    //you were changing only changes the local status that you created input into the method which is seperate from the datafield
     //Trying to make changing statuses flexible
-    public void changeStatus(String newStatus) {
-        newStatus = status.toUpperCase(); 
+    public void changeStatus(String status) {
+        String newStatus = status.toUpperCase();
         if(newStatus.contains("CREATE") || newStatus.contains("MADE") || newStatus.contains("ORDERED")) {
             this.status = "CREATED";
         }
-        else if(newStatus.contains("WAIT") || newStatus.contains("MAKING") || newStatus.contains("TRANSIT")) {
+        else if(newStatus.contains("WAIT") || newStatus.contains("MADE") || newStatus.contains("TRANSIT")) {
             this.status = "WAITING";
         }
         else if(newStatus.contains("CANCEL") || newStatus.contains("STOP") || newStatus.contains("ABORT")) {
@@ -54,5 +48,15 @@ public class Order {
         else {
             throw new RuntimeException("Error, status not valid");
         }
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "Order: " + foodsOrdered + "\n" +
+                "Total Price: " + totalPrice;
     }
 }
