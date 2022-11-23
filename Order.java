@@ -11,11 +11,12 @@ public class Order {
     //Can only be Created, Waiting, Cancelled
     private String status;
     private ArrayList<Food> foodsOrdered = new ArrayList<>();
-    private double moneyRequired; //May be needed not sure yet
+    private double totalPrice; //May be needed not sure yet
     private Menu menu;
 
     public Order(Menu menu) {
         this.menu = menu;
+        totalPrice = 0;
     }
 
     public Order(Menu menu, ArrayList<Food> foodsOrdered) {
@@ -27,6 +28,7 @@ public class Order {
         for(Food food : menu.getAllMeals()) {
             if(food.getName().equals(foodName)) {
                 foodsOrdered.add(food);
+                totalPrice += food.getPrice();
             }
         }
     }
@@ -48,4 +50,13 @@ public class Order {
         }
     }
 
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "Order: " + foodsOrdered + "\n" +
+                "Total Price: " + totalPrice;
+    }
 }
