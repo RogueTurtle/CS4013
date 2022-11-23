@@ -20,9 +20,7 @@ public class Food {
         else if(type.toUpperCase().contains("DESSERT")) {
             this.type = "DESSERT";
         }
-        else {
-            throw new RuntimeException("Error: Food not added as no adequate type was stated.");
-        }
+
         this.name = name;
         this.price = price;
     }
