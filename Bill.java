@@ -1,3 +1,9 @@
+package com.cs4013;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -12,21 +18,21 @@ public class Bill {
      **/
 
     private String receipt;
-    private Order order; //Pulling the order from the Order class
-    private double price;
+    private double totalPrice;
     private String payMethod;
+    private Order order;
     double tipAmount;
 
 
-    public double getPrice() {
-        return price;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
     public Bill(Order order, String payMethod) {
 
         this.order = order;
         this.payMethod = payMethod;
-        this.order = order.getPrice(); //Would need a getPrice method in the order class
+        totalPrice = order.getTotalPrice();
     }
 
 
@@ -38,29 +44,60 @@ public class Bill {
         this.receipt = receipt;
     }
 
-    public double payment() {
+    public double payment(Double amountPaid) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("DO you want to add a tip? y/n: ");
+        String tip = scan.nextLine();
+        if (tip == "y"|| tip == "Y") {
+            System.out.println("Home much would you like to tip");
+            tipAmount = scan.nextDouble();
+            scan.close();
+        } else {
+            tipAmount = 0;
+        }
+
         if (Objects.equals(payMethod, "Cash")) {
-            price = price + tipAmount;
-            if (price < 0) {
-                price = -price; //Change
-                System.out.println("Your change is " + price);
-                return price;
+            totalPrice = amountPaid + tipAmount;
+            if (totalPrice < 0) {
+                totalPrice = -totalPrice; //Change
+                System.out.println("Your change is " + totalPrice);
+                return totalPrice;
             }
 
         } else System.out.println("Incorrect amount of money");
 
-        if (payMethod == "Card") {
-            price = price + tipAmount;
+        if (Objects.equals(payMethod, "Card")) {
+            totalPrice = amountPaid + tipAmount;
             System.out.println("Transaction Verified");
         } else System.out.println("Void Transaction");
         return 0;
     }
 
-
-    // Printing out the receipt basically for the customer
+    public void income(double price) {
+        File income = new File("src/storage/RunningIncome.csv");
+        String incomeString = "";
+        double runningIncome = 0;
+        //Read Running Income and add price to running total then write total to file
+        try {
+            FileReader fr = new FileReader(income);
+            BufferedReader br = new BufferedReader(fr);
+            FileWriter fw = new FileWriter(income);
+            BufferedWriter bw = new BufferedWriter(fw);
+            incomeString = br.readLine();
+            runningIncome = Double.parseDouble(incomeString);
+            runningIncome += price;
+            incomeString = String.valueOf(runningIncome);
+            bw.write(incomeString);
+            br.close();
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    // To String Method
     @Override
     public String toString(){
-        return String.format("Your total for today is " + (getPrice() + tipAmount) + " Thank you for visiting.");
+        return String.format("Your total for today is " + (totalPrice + tipAmount) + " Thank you for visiting.");
                                             // Both of these names can be changed it's just to get the idea
     }
 
