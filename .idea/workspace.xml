@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0d69447a-bd0d-4621-b07b-90ae5f678353" name="Changes" comment="" />
+    <list default="true" id="0d69447a-bd0d-4621-b07b-90ae5f678353" name="Changes" comment="Alternative version of project.&#10;Account,Menu and Order classes replaced.&#10;Main, Admin, MainHubInterface, Reservations classes added.&#10;HubInterface interface added.&#10;menus.csv, accounts.csv files added.&#10;reservations.csv refactored and edited.&#10;tables.csv refactored.">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/project.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,11 +20,20 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/main" />
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -38,7 +54,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../untitled6" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.cs4013" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Account">
     <configuration name="Account" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -67,9 +98,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MenuTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cs4013.MenuTest" />
+      <module name="project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cs4013.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Account" />
+        <item itemvalue="Application.MenuTest" />
         <item itemvalue="Application.Login" />
       </list>
     </recent_temporary>
@@ -87,6 +132,49 @@
       <workItem from="1668874659100" duration="8552000" />
       <workItem from="1668893895398" duration="9000" />
     </task>
+    <task id="LOCAL-00001" summary="Removed redundant line of code from Account.java (set loggedIn to false when it is already false).">
+      <created>1669050891141</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669050891141</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Removed redundant catch exception from Account.java (tried to catch FileNotFoundException and an IOException. FileNotFoundException is a subclass of IOException and they both called the same code so you can just catch IOException instead).">
+      <created>1669051148326</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669051148326</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Removed redundant catch exception from Account.java (tried to catch FileNotFoundException and an IOException. FileNotFoundException is a subclass of IOException and they both called the same code so you can just catch IOException instead).">
+      <created>1669051656827</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669051656827</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Removed redundant type check in Menu.java (the type is already checked in the Food constructor).">
+      <created>1669054800282</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669054800282</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Removed redundant type check in Menu.java (the type is already checked in the Food constructor).">
+      <created>1669203577294</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669203577294</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Alternative version of project.&#10;Account,Menu and Order classes replaced.&#10;Main, Admin, MainHubInterface, Reservations classes added.&#10;HubInterface interface added.&#10;menus.csv, accounts.csv files added.&#10;reservations.csv refactored and edited.&#10;tables.csv refactored.">
+      <created>1669220841205</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669220841205</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,5 +190,13 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Removed redundant line of code from Account.java (set loggedIn to false when it is already false)." />
+    <MESSAGE value="Removed redundant exception from Account.java (tried to catch FileNotFoundException and an IOException. FileNotFoundException is a subclass of IOException and they both called the same code so you can just catch IOException instead)." />
+    <MESSAGE value="Removed redundant catch exception from Account.java (tried to catch FileNotFoundException and an IOException. FileNotFoundException is a subclass of IOException and they both called the same code so you can just catch IOException instead)." />
+    <MESSAGE value="Removed redundant type check in Menu.java (the type is already checked in the Food constructor)." />
+    <MESSAGE value="Alternative version of project.&#10;Account,Menu and Order classes replaced.&#10;Main, Admin, MainHubInterface, Reservations classes added.&#10;HubInterface interface added.&#10;menus.csv, accounts.csv files added.&#10;reservations.csv refactored and edited.&#10;tables.csv refactored." />
+    <option name="LAST_COMMIT_MESSAGE" value="Alternative version of project.&#10;Account,Menu and Order classes replaced.&#10;Main, Admin, MainHubInterface, Reservations classes added.&#10;HubInterface interface added.&#10;menus.csv, accounts.csv files added.&#10;reservations.csv refactored and edited.&#10;tables.csv refactored." />
   </component>
 </project>
