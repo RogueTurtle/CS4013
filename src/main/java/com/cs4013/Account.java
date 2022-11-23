@@ -42,15 +42,10 @@ public class Account {
                }
                else {
                    System.out.println("Error, incorrect username of password");
-                   loggedIn = false;
                }
            }
            br.close();
-       }
-       catch (FileNotFoundException e) {
-           e.printStackTrace();
-       }
-       catch (IOException e) {
+       } catch (IOException e) {
            e.printStackTrace();
        }
 
@@ -81,11 +76,7 @@ public class Account {
            }
            br.close();
            out.close();
-       }
-       catch (FileNotFoundException e) {
-           e.printStackTrace();
-       }
-       catch (IOException e) {
+       } catch (IOException e) {
            e.printStackTrace();
        }
    }
@@ -120,11 +111,7 @@ public class Account {
                     }
                 }
                 br.close();
-            }
-            catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
