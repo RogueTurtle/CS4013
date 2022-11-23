@@ -7,8 +7,8 @@ public class OrderTest {
         Menu menu = new Menu();
         Order order = new Order(menu);
 
-        menu.addMeal("Porridge", "Starter", "Our fine porridge", 10);
-        menu.addMeal("Chicken", "Main", "Our fine porridge", 10);
+        menu.addMeal("Porridge", "Starter", 10);
+        menu.addMeal("Chicken", "Main", 10);
 
         System.out.println(menu);
 

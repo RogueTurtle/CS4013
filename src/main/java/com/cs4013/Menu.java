@@ -18,8 +18,8 @@ public class Menu {
     }
 
     //This method is used to add a meal to allMeals and into one of the specified categories
-    public void addMeal(String name, String type, String desc, double price) {
-        Food newMeal = new Food(name, type, desc, price);
+    public void addMeal(String name, String type, double price) {
+        Food newMeal = new Food(name, type, price);
 
         if(type.toUpperCase().contains("STARTER")) {
             starters.add(newMeal);
