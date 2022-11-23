@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Customer extends Person{
 
     Reservation res = new Reservation();
-    Menu men = new Menu();
+    Menu men = new Menu(1);
     Customer(String name, int phoneNum) {
         super(name, phoneNum);
     }

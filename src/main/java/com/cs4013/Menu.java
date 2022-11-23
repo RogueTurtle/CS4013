@@ -17,8 +17,9 @@ public class Menu {
     private ArrayList<Food> allMeals = new ArrayList<>();
 
     public Menu(int restaurantID) {
+        this.restaurantID = restaurantID;
         try {
-            String line = "";
+            String line;
             BufferedReader br = new BufferedReader(new FileReader("src/storage/Menu.csv"));
 
             while((line = br.readLine()) != null) {
@@ -31,6 +32,7 @@ public class Menu {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public void lookForMenu() {
@@ -39,40 +41,67 @@ public class Menu {
 
     //This method is used to add a meal to allMeals and into one of the specified categories
     public void addMeal(String name, String type, double price) {
+        boolean loop = true;
+        boolean InMeals = false;
+        for(Food meal : allMeals) {
+            if(meal.getName().equalsIgnoreCase(name)) {
+                InMeals = true;
+                loop = false;
+                System.out.println(meal.getName() + " is already on the menu");
+            }
+        }
+        type = type.toUpperCase();
         Food newMeal = new Food(name, type, price);
 
-        if(type.toUpperCase().contains("STARTER")) {
-            starters.add(newMeal);
+        while(loop) {
+            if(type.contains("STARTER")) {
+                starters.add(newMeal);
+                loop = false;
+            }
+            else if(type.contains("SOUP")) {
+                soups.add(newMeal);
+                loop = false;
+            }
+            else if(type.contains("MAIN")) {
+                main_course.add(newMeal);
+                loop = false;
+            }
+            else if(type.contains("DESSERT")) {
+                dessert.add(newMeal);
+                loop = false;
+            }
+            else {
+                //Apparently not needed so can remove since I have exception in Food already - must remove food exception
+                Scanner scan = new Scanner(System.in);
+                System.out.println("Please input a valid type - 'STARTER', 'SOUP', 'MAIN', 'DESSERT' ");
+                type = scan.next().toUpperCase();
+            }
         }
-        else if(type.toUpperCase().contains("SOUP")) {
-            soups.add(newMeal);
+        if(!InMeals) {
+            allMeals.add(newMeal);
         }
-        else if(type.toUpperCase().contains("MAIN")) {
-            main_course.add(newMeal);
-        }
-        else if(type.toUpperCase().contains("DESSERT")) {
-            dessert.add(newMeal);
-        }
-        else {
-            //Apparently not needed so can remove since I have exception in Food already
-            throw new RuntimeException("Error, the meal does not fit into any of the categories. Please specify the category");
-        }
-        allMeals.add(newMeal);
 
         try {
             FileWriter out = new FileWriter("src/storage/Menu.csv", true);
             String line = "";
             BufferedReader br = new BufferedReader(new FileReader("src/storage/Menu.csv"));
+            boolean inMenuCSV = false;
 
             while((line = br.readLine()) != null) {
                 String[] menus = line.split(",");
-                if(restaurantID == Integer.parseInt(menus[0])) {
-                    if(!menus[1].equalsIgnoreCase(name)) {
-                        out.append(restaurantID + "," + name + "," + Double.toString(price) + "," + type);
+                    if(menus[1].equalsIgnoreCase(name)) {
+                        inMenuCSV = true;
+                        break;
                     }
-                }
+            }
+            if(!inMenuCSV && (line = br.readLine()) == "") {
+                out.write(restaurantID + "," + name + "," + Double.toString(price) + "," + type);
+            }
+            else if(!inMenuCSV) {
+                out.append(System.getProperty("line.separator") + restaurantID + "," + name + "," + Double.toString(price) + "," + type);
             }
             br.close();
+            out.close();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -89,6 +118,7 @@ public class Menu {
                 main_course.remove(food);
                 dessert.remove(food);
                 allMeals.remove(food);
+                deleteFromCSV(food.getName());
             }
         }
     }
@@ -149,7 +179,17 @@ public class Menu {
             bufferedWriter.close();
             fileWriter.close();
 
-
+            Scanner scanner = new Scanner(new File("src/storage/menuTemp.csv"));
+            FileWriter fw = new FileWriter("src/storage/Menu.csv", false);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            while(scanner.hasNext()) {
+                pw.println(scanner.next()); //Copies all code from loginTemp to Login.
+            }
+            scanner.close();
+            pw.flush();
+            pw.close();
+            tempFile.delete();
 
         }catch (Exception e) {
 

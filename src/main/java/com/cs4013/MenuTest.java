@@ -15,7 +15,11 @@ public class MenuTest {
         System.out.println();
 
         menu.addMeal("Porridge", "Starter", 10);
+        menu.addMeal("Porridge", "Starter", 10);
+        menu.addMeal("Porridge", "Starter", 10);
+        menu.addMeal("Porridge", "Starter", 10);
         menu.addMeal("Chicken", "Main", 10);
+       // menu.addMeal("Chicken", "Main", 10);
 
         System.out.println(menu.getMainCourse());
         System.out.println();
