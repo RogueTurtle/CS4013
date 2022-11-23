@@ -4,7 +4,7 @@ public class OrderTest {
 
     public static void main(String[] args) {
 
-        Menu menu = new Menu();
+        Menu menu = new Menu(1);
         Order order = new Order(menu);
 
         menu.addMeal("Porridge", "Starter", 10);

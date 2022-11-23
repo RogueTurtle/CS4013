@@ -9,7 +9,7 @@ package com.cs4013;
 public class MenuTest {
 
     public static void main(String[] args) {
-        Menu menu = new Menu();
+        Menu menu = new Menu(1);
 
         System.out.println(menu.getStarters());
         System.out.println();

@@ -3,17 +3,37 @@ package com.cs4013; /**
  * Student: 21316333
  */
 
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Menu {
 
+    private int restaurantID;
     private ArrayList<Food> starters = new ArrayList<>();
     private ArrayList<Food> soups = new ArrayList<>();
     private ArrayList<Food> main_course = new ArrayList<>();
     private ArrayList<Food> dessert = new ArrayList<>();
     private ArrayList<Food> allMeals = new ArrayList<>();
 
-    public Menu() {
+    public Menu(int restaurantID) {
+        try {
+            String line = "";
+            BufferedReader br = new BufferedReader(new FileReader("src/storage/Menu.csv"));
+
+            while((line = br.readLine()) != null) {
+                String[] menus = line.split(",");
+                if(restaurantID == Integer.parseInt(menus[0])) {
+                        addMeal(menus[1], menus[3], Double.parseDouble(menus[2]));
+                }
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void lookForMenu() {
 
     }
 
@@ -38,6 +58,25 @@ public class Menu {
             throw new RuntimeException("Error, the meal does not fit into any of the categories. Please specify the category");
         }
         allMeals.add(newMeal);
+
+        try {
+            FileWriter out = new FileWriter("src/storage/Menu.csv", true);
+            String line = "";
+            BufferedReader br = new BufferedReader(new FileReader("src/storage/Menu.csv"));
+
+            while((line = br.readLine()) != null) {
+                String[] menus = line.split(",");
+                if(restaurantID == Integer.parseInt(menus[0])) {
+                    if(!menus[1].equalsIgnoreCase(name)) {
+                        out.append(restaurantID + "," + name + "," + Double.toString(price) + "," + type);
+                    }
+                }
+            }
+            br.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //Removes meals when the name of the meal is specified
@@ -82,5 +121,38 @@ public class Menu {
                 "Soups: " + soups +"\n" +
                 "Main Course: " + main_course +"\n" +
                 "Dessert: " + dessert;
+    }
+
+    public void deleteFromCSV(String removeTerm) {
+        File tempFile = new File("src/storage/menuTemp.csv");
+        File realFile = new File("src/storage/Menu.csv");
+        String line = "";
+
+        try {
+            FileWriter fileWriter = new FileWriter("src/storage/menuTemp.csv", true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
+
+            FileReader fileReader = new FileReader("src/storage/Menu.csv");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            while((line = bufferedReader.readLine()) != null) {
+                String[] menus = line.split(",");
+                if(!menus[1].equalsIgnoreCase(removeTerm)) {
+                    printWriter.println(menus[0] + "," + menus[1] + "," + menus[2] + "," + menus[3] + "\n");
+                }
+            }
+            printWriter.flush();
+            printWriter.close();
+            fileReader.close();
+            bufferedReader.close();
+            bufferedWriter.close();
+            fileWriter.close();
+
+
+
+        }catch (Exception e) {
+
+        }
     }
 }
