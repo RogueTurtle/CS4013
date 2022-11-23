@@ -1,4 +1,9 @@
 package com.cs4013;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -65,6 +70,27 @@ public class Bill {
         return 0;
     }
 
+    public void income(double price) {
+        File income = new File("src/storage/RunningIncome.csv");
+        String incomeString = "";
+        double runningIncome = 0;
+        //Read Running Income and add price to running total then write total to file
+        try {
+            FileReader fr = new FileReader(income);
+            BufferedReader br = new BufferedReader(fr);
+            FileWriter fw = new FileWriter(income);
+            BufferedWriter bw = new BufferedWriter(fw);
+            incomeString = br.readLine();
+            runningIncome = Double.parseDouble(incomeString);
+            runningIncome += price;
+            incomeString = String.valueOf(runningIncome);
+            bw.write(incomeString);
+            br.close();
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     // Printing out the receipt basically for the customer
     @Override
