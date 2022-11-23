@@ -1,9 +1,5 @@
 package com.cs4013;
-/**
- * Made by Ahmed Abdalla
- * Student: 21316333
- */
-
+//Author - Ahmed Abdalla - 21316333
 
 import java.io.*;
 import java.util.Scanner;
@@ -45,11 +41,18 @@ public class Account {
                     break; //or could add "&& !loggedIn" to while loop
                }
                else {
-                   System.out.println("Error, incorrect username of password");
+                   loggedIn = false;
                }
            }
+           if(!loggedIn) {
+               System.out.println("Error, incorrect username of password"); 
+           }
            br.close();
-       } catch (IOException e) {
+       }
+       catch (FileNotFoundException e) {
+           e.printStackTrace();
+       }
+       catch (IOException e) {
            e.printStackTrace();
        }
 
@@ -80,7 +83,11 @@ public class Account {
            }
            br.close();
            out.close();
-       } catch (IOException e) {
+       }
+       catch (FileNotFoundException e) {
+           e.printStackTrace();
+       }
+       catch (IOException e) {
            e.printStackTrace();
        }
    }
@@ -115,7 +122,11 @@ public class Account {
                     }
                 }
                 br.close();
-            } catch (IOException e) {
+            }
+            catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -156,12 +167,19 @@ public class Account {
             printWriter.flush();
             printWriter.close();
             bufferedWriter.close();
-            oldFile.delete();
-            //System.out.println("The file has deleted: " + loginFile.delete()); //debug
-            File dump = new File("src/storage/Login.csv"); //rename works if not in the same folder
-            newFile.renameTo(dump);
-
-            loginFile = newFile;
+            //oldFile.delete() not working possibly due to intelliJ not having permission to use .delete. I closed all writers/readers so thats not an issue.
+            //Hence the following code. However newFile.delete() works because its not factored.
+            Scanner scanner = new Scanner(new File(tempFilePath));
+            FileWriter fw = new FileWriter(loginFile, false);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            while(scanner.hasNext()) {
+                pw.println(scanner.next()); //Copies all code from loginTemp to Login.
+            }
+            scanner.close();
+            pw.flush();
+            pw.close();
+            newFile.delete();
 
         }
         catch (Exception e) {
