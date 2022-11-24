@@ -10,7 +10,7 @@ public class Restaurant {
     private Reservation reservation;
     private ArrayList<Chef> chefs;
     private Guests[] guests; //Needed or nah?
-    private ArrayList<Customer> customers;
+    private Customer[] customers;
     private ArrayList<Order> orders;
     private ArrayList<FrontStaff> frontStaffs;
     private ArrayList<Owner> owners;
@@ -32,7 +32,6 @@ public class Restaurant {
         frontStaffs = new ArrayList<>();
         lastUsedAccount = new Account();
         owners = new ArrayList<>();
-        customers = new ArrayList<>();
     }
 
     /**
@@ -138,12 +137,11 @@ public class Restaurant {
                 (1) Reservations
                 (2) Check menu
                 (3) Admin (requires authority)
-                (4) Log Out
-                >""",1 , 4);
+                >""",1 , 3);
             switch (response) {
                 case (1): {
-                    //Show reservations
-
+                    Reservation res = new Reservation();
+                    res.showReservation();
                 }
                 case (2):{
                     System.out.println(menu);
@@ -156,10 +154,6 @@ public class Restaurant {
                         System.out.println("--- You do not have permission. ---");
                         mainMenu();
                     }
-                }
-                case (4):{
-                    lastUsedAccount.logOut();
-                    restaurantLoginPage();
                 }
             }
         }
@@ -178,7 +172,7 @@ public class Restaurant {
                 (4) Reserve a table
                 (5) Generate income statistics
                 (6) Go back
-                >""", 1, 6);
+                >""", 1, 5);
         switch (response) {
             case (1): {
                 // Promote a user (OWNER only)
@@ -230,7 +224,6 @@ public class Restaurant {
                                 String[] foods = line.split(",");
                                 fs.createOrder(order, foods);
                                 System.out.println(order);
-                                orders.add(order);
                             }
                         }
                     }
@@ -250,22 +243,18 @@ public class Restaurant {
                                 if(orders.isEmpty()) {
                                     System.out.println("There are currently no orders");
                                 }
+                                for(Order order : orders) {
+                                    System.out.println(orders.indexOf(order) + ": " + order);
+                                }
+                                System.out.println("What order would you like to change?");
+                                int orderNumber = scanner.nextInt();
+                                if(orders.get(orderNumber) != null) {
+                                    System.out.println("What is the status of the order?");
+                                    String status = scanner.next();
+                                    orders.get(orderNumber).changeStatus(status);
+                                }
                                 else {
-                                    System.out.println("What order would you like to change?");
-                                    for(Order order : orders) {
-                                        System.out.println(orders.indexOf(order) + ": " + order);
-                                    }
-                                    int orderNumber = scanner.nextInt();
-                                    if(orders.get(orderNumber) != null) {
-                                        System.out.println("What is the status of the order?");
-                                        Scanner scan = new Scanner(System.in);
-                                        String status = scan.next();
-                                        orders.get(orderNumber).changeStatus(status);
-                                        System.out.println(orders.get(orderNumber));
-                                    }
-                                    else {
-                                        System.out.println("There is no order with this order number!");
-                                    }
+                                    System.out.println("There is no order with this order number!");
                                 }
                             }
                         }
@@ -298,13 +287,8 @@ public class Restaurant {
                     break;
                 }
                 case (5): {
-                    // Generate income statistics (OWNER only)
-                    adminMenu();
-                    break;
-                }
-                case (6): {
-                    // Go back to MainHub
-                    mainMenu();
+                   // Go back to MainHub
+                   mainMenu();
                 }
             }
     }

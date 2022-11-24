@@ -78,6 +78,30 @@ public class Reservation {
 
     }
 
+    public String showReservation() {
+        String line = "";
+        ArrayList<String> lines = new ArrayList<>();
+        String finalString = "";
+        try {
+            FileReader fr = new FileReader(resFile);
+            BufferedReader br = new BufferedReader(fr);
+            while (br.ready()) {
+                line = br.readLine();
+                lines.add(line);
+            }
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 0; i < lines.size(); i++) {
+            finalString += lines.get(i);
+            finalString += "\n";
+        }
+
+        return finalString;
+    }
+
     
     /** 
      * @param restId
