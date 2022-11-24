@@ -3,10 +3,11 @@ package com.cs4013;
 import java.util.ArrayList;
 
 public class FrontStaff extends Staff{
-    ArrayList<Order> orders;
+    private ArrayList<Order> orders;
 
     FrontStaff(String name, int phoneNum){
         super(name, phoneNum);
+        orders = new ArrayList<>();
     }
     @Override
     public String getName() {
