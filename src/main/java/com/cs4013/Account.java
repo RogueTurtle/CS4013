@@ -176,7 +176,7 @@ public class Account {
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
             while(scanner.hasNext()) {
-                pw.println(scanner.next()); //Copies all code from loginTemp to Login.
+                pw.print(scanner.next() + "\n"); //Copies all code from loginTemp to Login.
             }
             scanner.close();
             pw.flush();
