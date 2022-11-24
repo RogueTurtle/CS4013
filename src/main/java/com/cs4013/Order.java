@@ -34,7 +34,7 @@ public class Order {
 
     public void addMeal(String meal) {
         for(Food food : menu.getAllMeals()) {
-            if(food.getName().equals(meal)) {
+            if(food.getName().equalsIgnoreCase(meal)) {
                 foodsOrdered.add(food);
                 totalPrice += food.getPrice();
             }

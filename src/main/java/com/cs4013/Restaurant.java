@@ -13,6 +13,7 @@ public class Restaurant {
     private Customer[] customers;
     private ArrayList<Order> orders;
     private ArrayList<FrontStaff> frontStaffs;
+    private ArrayList<Owner> owners;
     private static Scanner scanner;
     private Account lastUsedAccount;
 
@@ -30,6 +31,7 @@ public class Restaurant {
         chefs = new ArrayList<>();
         frontStaffs = new ArrayList<>();
         lastUsedAccount = new Account();
+        owners = new ArrayList<>();
     }
 
     /**
@@ -58,13 +60,20 @@ public class Restaurant {
                 case (2): {
                     // go to sign up
                     account.createAccount();
+                    accounts.add(account);
                 }
             }
         }
         accounts.add(lastUsedAccount);
-        if(lastUsedAccount.getLevel() == 4) {
+        if(lastUsedAccount.getLevel() == 6) {
+            Owner owner = new Owner(lastUsedAccount.getName(), 282);
+            owners.add(owner);
+
+        }
+        else if(lastUsedAccount.getLevel() == 4) {
             Chef chef = new Chef(lastUsedAccount.getName(), 344 ); //Phonenumber just a test
             chefs.add(chef);
+
         }
         else if(lastUsedAccount.getLevel() == 3) {
             FrontStaff fs1 = new FrontStaff(lastUsedAccount.getName(), 2344);
@@ -203,7 +212,10 @@ public class Restaurant {
                 case (2): {
                     // Create an order (FRONT_STAFF or OWNER)
                     Order order = new Order(menu);
-                    if (lastUsedAccount.getLevel() == 3|| lastUsedAccount.getLevel() == 6) {
+                    if (lastUsedAccount.getLevel() == 3 || lastUsedAccount.getLevel() == 6) {
+                        if(frontStaffs.isEmpty()) {
+                            System.out.println("There are no front staff currently working");;
+                        }
                         for(FrontStaff fs : frontStaffs) {
                             if(lastUsedAccount.getName().equalsIgnoreCase(fs.getName())) {
                                 System.out.println(menu);
@@ -222,9 +234,15 @@ public class Restaurant {
                     break;
                 }
                 case (3): {
-                    if(lastUsedAccount.getLevel() == 4) {
+                    if(lastUsedAccount.getLevel() == 4 || lastUsedAccount.getLevel() == 6) {
+                        if(chefs.isEmpty()) {
+                            System.out.println("There are no chefs working right now");
+                        }
                         for(Chef chef : chefs) {
                             if(lastUsedAccount.getName().equalsIgnoreCase(chef.getName())) {
+                                if(orders.isEmpty()) {
+                                    System.out.println("There are currently no orders");
+                                }
                                 for(Order order : orders) {
                                     System.out.println(orders.indexOf(order) + ": " + order);
                                 }
@@ -239,10 +257,10 @@ public class Restaurant {
                                     System.out.println("There is no order with this order number!");
                                 }
                             }
-                            else {
-                                System.out.println("You do not have permissions here");
-                            }
                         }
+                    }
+                    else {
+                        System.out.println("You do not have permissions here");
                     }
                     adminMenu();
                     break;
