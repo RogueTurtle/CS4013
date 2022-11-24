@@ -141,11 +141,14 @@ public class Restaurant {
             switch (response) {
                 case (1): {
                     Reservation res = new Reservation();
-                    System.out.print(res.showReservation());
+                    System.out.print(res.showReservation() + "\n");
+                    mainMenu();
+                    break;
                 }
                 case (2):{
                     System.out.println(menu);
                     mainMenu();
+                    break;
                 }
                 case (3):{
                     if (lastUsedAccount.getLevel() >= 3) {
@@ -170,8 +173,7 @@ public class Restaurant {
                 (2) Create an order
                 (3) Change order status
                 (4) Reserve a table
-                (5) Generate income statistics
-                (6) Go back
+                (5) Go back
                 >""", 1, 5);
         switch (response) {
             case (1): {
@@ -266,24 +268,24 @@ public class Restaurant {
                     break;
                 }
                 case (4): {
-                    
+                    Scanner scan = new  Scanner(System.in);
                     System.out.println("Please enter table number: ");
-                    int tableNo = scanner.nextInt();
+                    int tableNo = scan.nextInt();
                     System.out.println("Please enter name for reservation: ");
-                    String name = scanner.next();
+                    String name = scan.next();
                     System.out.println("Please Enter phone number for reservation: ");
-                    int number = scanner.nextInt();
+                    int number = scan.nextInt();
                     System.out.println("Please enter the number of people in attendance: ");
-                    int noPeople = scanner.nextInt();
+                    int noPeople = scan.nextInt();
                     System.out.println("Please Enter the date of the reservation (dd/mm/yy): ");
-                    String date = scanner.next();
+                    String date = scan.next();
                     System.out.print("Please enter the time for reservation (e.g 12:45): ");
-                    String time = scanner.next();
-                    
+                    String time = scan.next();
+                    scan.close();
 
                     Reservation res = new Reservation();
                     res.addReservation(name, date, number, noPeople, restaurantId, time, tableNo);
-                    //adminMenu();
+                    adminMenu();
                     break;
                 }
                 case (5): {

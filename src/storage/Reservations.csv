@@ -1,2 +1,4 @@
 RestaurantId,tableNo,name,phone number,numPeople,date,time
-1,1,john,12345,3,today,now,
+1,1,john,12345,3,today,now
+1,1,ayjmed,837334,3,29/10/2003,12;45,
+1,1,ahmed,384,3,29/10/03,12:24,
