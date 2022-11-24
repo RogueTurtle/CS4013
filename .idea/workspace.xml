@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0d69447a-bd0d-4621-b07b-90ae5f678353" name="Changes" comment="">
+    <list default="true" id="0d69447a-bd0d-4621-b07b-90ae5f678353" name="Changes" comment="Implemented reservations. Deleted useless Customer class.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Customer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Reservations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/storage/Login.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/Login.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/README.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/storage/Reservations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/Reservations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Customer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Reservation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Reservation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Restaurant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Restaurant.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,6 +166,14 @@
       <workItem from="1668893895398" duration="9000" />
       <workItem from="1669230012093" duration="5425000" />
     </task>
+    <task id="LOCAL-00001" summary="Implemented reservations. Deleted useless Customer class.">
+      <created>1669288742855</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669288742855</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +189,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implemented reservations. Deleted useless Customer class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented reservations. Deleted useless Customer class." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
