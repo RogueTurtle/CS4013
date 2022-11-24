@@ -18,19 +18,21 @@ public class Bill {
      **/
 
     private String receipt;
-    private double price;
+    private double totalPrice;
     private String payMethod;
-    double tipAmount;
+    private Order order;
+    private double tipAmount;
 
 
-    public double getPrice() {
-        return price;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
     public Bill(Order order, String payMethod) {
 
+        this.order = order;
         this.payMethod = payMethod;
-        //price = order.getPrice(); //Would need a getPrice method in the order class
+        totalPrice = order.getTotalPrice();
     }
 
 
@@ -42,32 +44,34 @@ public class Bill {
         this.receipt = receipt;
     }
 
-    public double payment() {
+    public void payment(Double amountPaid) {
         Scanner scan = new Scanner(System.in);
         System.out.println("DO you want to add a tip? y/n: ");
         String tip = scan.nextLine();
-        if (tip == "y"|| tip == "Y") {
-            System.out.println("Home much would you like to tip");
+        double price = order.getTotalPrice();
+        if (tip.equals("y")|| tip.equals("Y")) {
+            System.out.println("How much would you like to tip");
             tipAmount = scan.nextDouble();
             scan.close();
         } else {
             tipAmount = 0;
         }
+
+
         if (Objects.equals(payMethod, "Cash")) {
-            price = price + tipAmount;
-            if (price < 0) {
-                price = -price; //Change
-                System.out.println("Your change is " + price);
-                return price;
+            totalPrice = price + tipAmount;
+            if (totalPrice <= amountPaid) {
+                amountPaid -= totalPrice; //Change
+                System.out.println("Your change is " + amountPaid);
+            } else {
+                System.out.println("Insufficient Money.");
             }
-
-        } else System.out.println("Incorrect amount of money");
-
-        if (payMethod == "Card") {
-            price = price + tipAmount;
+        }else if (Objects.equals(payMethod, "Card")) {
+            totalPrice = amountPaid + tipAmount;
             System.out.println("Transaction Verified");
-        } else System.out.println("Void Transaction");
-        return 0;
+        } else {System.out.println("Void Transaction");}
+
+
     }
 
     public void income(double price) {
@@ -91,12 +95,11 @@ public class Bill {
             e.printStackTrace();
         }
     }
-
-    // Printing out the receipt basically for the customer
+    // To String Method
     @Override
     public String toString(){
-        return String.format("Your total for today is " + (getPrice() + tipAmount) + " Thank you for visiting.");
-                                            // Both of these names can be changed it's just to get the idea
+        return String.format("Thank you for visiting");
+        // Both of these names can be changed it's just to get the idea
     }
 
 }
