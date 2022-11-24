@@ -4,18 +4,14 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.Scanner;
 
 //Author Stephen Walsh :21334234
 
 public class Bill {
-    /***
-     *
-     Scanner scan = new Scanner(System.in); This will prob have to go into the main class if we want to incorporate tips
-     System.out.println("Please enter tip amount: ")
-     double tipAmount = scan.nextDouble();//Optional Tip
-     **/
 
     private String receipt;
     private double totalPrice;
@@ -24,6 +20,10 @@ public class Bill {
     private double tipAmount;
 
 
+    
+    /** 
+     * @return double
+     */
     public double getTotalPrice() {
         return totalPrice;
     }
@@ -36,14 +36,27 @@ public class Bill {
     }
 
 
+    
+    /** 
+     * @return String
+     */
     public String getReceipt() {
         return receipt;
     }
 
+    
+    /** 
+     * @param receipt
+     */
     public void setReceipt(String receipt) {
         this.receipt = receipt;
     }
 
+    
+    /** 
+     * @param amountPaid
+     * 
+     */
     public void payment(Double amountPaid) {
         Scanner scan = new Scanner(System.in);
         System.out.println("DO you want to add a tip? y/n: ");
@@ -74,10 +87,18 @@ public class Bill {
         
     }
 
+    
+    /** 
+     * @param price
+     * generates a running total of income generated
+     */
     public void income(double price) {
         File income = new File("src/storage/RunningIncome.csv");
         String incomeString = "";
         double runningIncome = 0;
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+        String finalString = "";
         //Read Running Income and add price to running total then write total to file
         try {
             FileReader fr = new FileReader(income);
@@ -88,13 +109,18 @@ public class Bill {
             runningIncome = Double.parseDouble(incomeString);
             runningIncome += price;
             incomeString = String.valueOf(runningIncome);
-            bw.write(incomeString);
+            finalString = incomeString + "," + formatter.format(today);
+            bw.write(finalString);
             br.close();
             bw.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    
+    /** 
+     * @return String
+     */
     // To String Method
     @Override
     public String toString(){

@@ -20,10 +20,18 @@ public class Person {
         this.phoneNum = phoneNum;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getName() {
         return name;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getPhoneNum() {
         return phoneNum;
     }

@@ -62,10 +62,18 @@ public class Order {
         }
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getTotalPrice() {
         return totalPrice;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "Order: " + foodsOrdered + "\n" +

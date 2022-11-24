@@ -1,6 +1,8 @@
 package com.cs4013;
 
-//creates guest object
+/*
+ * creates new guest object for use in reservations
+ */
 public class Guests {
     private String name;
     private String date;
@@ -21,27 +23,59 @@ public class Guests {
         
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getName() {
         return name;
     }
+    
+    /** 
+     * @return String
+     */
     public String getDate() {
         return date;
     }
+    
+    /** 
+     * @return String
+     */
     public String getTime() {
         return time;
     }
+    
+    /** 
+     * @return int
+     */
     public int getTableId() {
         return tableId;
     }
+    
+    /** 
+     * @return int
+     */
     public int getPhoneNum() {
         return phoneNum;
     }
+    
+    /** 
+     * @return int
+     */
     public int getGuestNum() {
         return guestNum;
     }
+    
+    /** 
+     * @return int
+     */
     public int getRestId() {
         return restId;
     }
+    
+    /** 
+     * @return String
+     */
     public String guestsToString(){
         return (getRestId()+ ","+ getTableId() + ","+ getName()+ ","+getPhoneNum()+"," + getGuestNum() + "," + getDate() + "," + getTime());
     }

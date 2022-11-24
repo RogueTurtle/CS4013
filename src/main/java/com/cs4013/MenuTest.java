@@ -8,6 +8,10 @@ package com.cs4013;
 
 public class MenuTest {
 
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         Menu menu = new Menu(1);
 

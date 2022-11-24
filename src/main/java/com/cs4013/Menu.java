@@ -100,6 +100,12 @@ public class Menu {
         addToCSV(name, type, price);
     }
 
+    
+    /** 
+     * @param name
+     * @param type
+     * @param price
+     */
     private void addToCSV(String name, String type, double price) {
         try {
             FileWriter out = new FileWriter("src/storage/Menu.csv", true);
@@ -148,27 +154,51 @@ public class Menu {
         }
     }
 
+    
+    /** 
+     * @return String
+     */
     //Used to be of type Arraylist<Food>
     public String getStarters() {
         return "Starters: " + starters;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getSoups() {
         return "Soups: "  + soups;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getMainCourse() {
         return "Main Course: " + main_course;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getDessert() {
         return "Dessert: " + dessert;
     }
 
+    
+    /** 
+     * @return ArrayList<Food>
+     */
     public ArrayList<Food> getAllMeals() {
         return allMeals;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return  "Menu: " + "\n" +
@@ -178,6 +208,10 @@ public class Menu {
                 "Dessert: " + dessert;
     }
 
+    
+    /** 
+     * @param removeTerm
+     */
     private void deleteFromCSV(String removeTerm) {
         File tempFile = new File("src/storage/menuTemp.csv");
         File realFile = new File("src/storage/Menu.csv");
