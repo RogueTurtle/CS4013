@@ -1,0 +1,600 @@
+Index: src/storage/Reservations.csv
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>RestaurantId,tableNo,name,phone number,numPeople,date,time\r\n1,1,john,12345,3,today,now\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/storage/Reservations.csv b/src/storage/Reservations.csv
+--- a/src/storage/Reservations.csv	
++++ b/src/storage/Reservations.csv	
+@@ -1,2 +1,3 @@
+ RestaurantId,tableNo,name,phone number,numPeople,date,time
+-1,1,john,12345,3,today,now
++1,4e8c68f7-d846-4520-ad85-4a43ff564ca7,4,2022-12-20 18:00,1,aaron
++1,92d6ea27-0da6-4514-a63f-0a5dc930fc96,2,2022-12-20 18:00,2,aaron
+\ No newline at end of file
+Index: src/main/java/com/cs4013/Customer.java
+===================================================================
+diff --git a/src/main/java/com/cs4013/Customer.java b/src/main/java/com/cs4013/Customer.java
+deleted file mode 100644
+--- a/src/main/java/com/cs4013/Customer.java	
++++ /dev/null	
+@@ -1,103 +0,0 @@
+-package com.cs4013;
+-//adds and cancels reservation
+-//view menu
+-//create order
+-//views bill
+-//view tables
+-
+-import java.util.Scanner;
+-
+-public class Customer extends Person{
+-
+-    Reservation res = new Reservation();
+-    Menu men = new Menu(1);
+-    Customer(String name, int phoneNum) {
+-        super(name, phoneNum);
+-    }
+-
+-    
+-    /** 
+-     * @param args
+-     */
+-
+-    
+-    /** 
+-     * @param date
+-     * @param guestNum
+-     * @param restId
+-     * @param time
+-     * @param tableId
+-     */
+-    public void addReservation(String date, int guestNum, int restId, String time, int tableId) {
+-        res.addReservation(getName(), date, getPhoneNum(), guestNum, restId, time, tableId);
+-    }
+-
+-    
+-    /** 
+-     * @param phoneNum
+-     */
+-    public void cancelation(int phoneNum) {
+-        res.cancelation(phoneNum);
+-    }
+-
+-    public void viewMenu() {
+-        men.toString();
+-    }
+-
+-    
+-    /** 
+-     * @param restId
+-     * @param time
+-     * @param date
+-     */
+-    public void viewTables(int restId, String time, String date) {
+-        res.tables(restId, time, date);
+-    }
+-
+-    
+-    /** 
+-     * @return Order
+-     */
+-    public Order order() {
+-        Order order = new Order(men);
+-        String quit = "";
+-        Scanner scan = new Scanner(System.in);
+-        String foodString = "";
+-        while (quit!="q" || quit!="Q") {
+-            System.out.println("Please enter the name of the food item you wish to order or Enter q to finish and exit ");
+-            foodString = scan.nextLine();
+-            if (foodString == "q" || foodString == "Q") {
+-                quit = foodString;
+-                scan.close();
+-            } else {
+-                order.addMeal(foodString);
+-            }
+-        }
+-        return order;
+-    }
+-
+-    
+-    /** 
+-     * @param paymentMethod
+-     */
+-    public void getBill(String paymentMethod) {
+-        Bill bill = new Bill(order(), paymentMethod);
+-        bill.getReceipt();
+-    }
+-
+-    
+-    /** 
+-     * @return String
+-     */
+-    @Override
+-    public String getName() {
+-        return super.getName();
+-    }
+-    
+-    /** 
+-     * @return int
+-     */
+-    public int getPhoneNum() {
+-        return super.getPhoneNum();
+-    }
+-}
+\ No newline at end of file
+Index: src/main/java/com/cs4013/Reservation.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cs4013;\r\n\r\nimport java.io.BufferedReader;\r\nimport java.io.File;\r\nimport java.io.FileReader;\r\nimport java.io.FileWriter;\r\nimport java.util.ArrayList;\r\n\r\npublic class Reservation {\r\n    File resFile = new File(\"src/storage/Reservations.csv\");\r\n    File tableFile = new File(\"src/storage/Tables.csv\");\r\n\r\n    ArrayList<Guests> guestList = new ArrayList<Guests>();\r\n    \r\n    /** \r\n     * @param name\r\n     * @param date\r\n     * @param phoneNum\r\n     * @param guestNum\r\n     * @param restId\r\n     * @param time\r\n     * @param tableId\r\n     * \r\n     * creates new guest object and writes it to a csv file\r\n     */\r\n    public void addReservation(String name, String date, int phoneNum, int guestNum, int restId, String time, int tableId) {\r\n        Guests guests = new Guests(name, date, phoneNum, guestNum, restId,time,tableId);\r\n        guestList.add(guests);\r\n        String[] guestString = guests.guestsToString().split(\",\");\r\n        try {\r\n            FileWriter out = new FileWriter(resFile, true);\r\n            for (int i = 0; i < guestString.length; i++) {\r\n                out.write(guestString[i]);\r\n                out.write(\",\");\r\n            }\r\n            out.write(\"\\n\");\r\n            out.flush();\r\n            out.close();\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        } \r\n    }\r\n\r\n    \r\n    /** \r\n     * @param phoneNum\r\n     * adds every line from the file into an array but skips the line containing the phone number of the \r\n     * reservation to be cancelled\r\n     */\r\n    public void cancelation(int phoneNum) {\r\n        ArrayList<String> lines = new ArrayList<String>();\r\n        String temp = \"\";\r\n        String phoneString = Integer.toString(phoneNum);\r\n        try {\r\n            FileReader fr = new FileReader(resFile);\r\n            BufferedReader br = new BufferedReader(fr);\r\n            while (br.ready()) {\r\n                temp = br.readLine();\r\n                if (!temp.contains(phoneString)) {\r\n                    lines.add(temp);\r\n                }\r\n            }\r\n            br.close();\r\n            FileWriter fw1 = new FileWriter(resFile, false);\r\n            fw1.write(\"\");\r\n            fw1.flush();\r\n            fw1.close();\r\n            FileWriter fw2 = new FileWriter(resFile, true);\r\n            for (int i = 0; i < lines.size(); i++) {\r\n                fw2.write(lines.get(i));\r\n                fw2.write(\"\\n\");\r\n            }\r\n            fw2.flush();\r\n            fw2.close();\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n    }\r\n\r\n    public String showReservation() {\r\n        String line = \"\";\r\n        ArrayList<String> lines = new ArrayList<>();\r\n        String finalString = \"\";\r\n        try {\r\n            FileReader fr = new FileReader(resFile);\r\n            BufferedReader br = new BufferedReader(fr);\r\n            while (br.ready()) {\r\n                line = br.readLine();\r\n                lines.add(line);\r\n            }\r\n            br.close();\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n        for (int i = 0; i < lines.size(); i++) {\r\n            finalString += lines.get(i);\r\n            finalString += \"\\n\";\r\n        }\r\n\r\n        return finalString;\r\n    }\r\n\r\n    \r\n    /** \r\n     * @param restId\r\n     * @param time\r\n     * @param date\r\n     * @return String\r\n     * \r\n     * allows the user to view tables that arent reserved\r\n     */\r\n    public String tables(int restId, String time, String date) {\r\n        String line = \"\";\r\n        ArrayList<String> tableLines = new ArrayList<String>();\r\n        ArrayList<String> resLines = new ArrayList<String>();\r\n        String tablesString = \"\";\r\n        try {\r\n            FileReader tableFr = new FileReader(tableFile);\r\n            BufferedReader tableBr = new BufferedReader(tableFr);\r\n            while (tableBr.ready()) {\r\n                line = tableBr.readLine();\r\n                if (line.charAt(0) == restId) {\r\n                    tableLines.add(line);\r\n                }\r\n            }\r\n            tableBr.close();\r\n            \r\n            FileReader resFr = new FileReader(resFile);\r\n            BufferedReader resBr = new BufferedReader(resFr);\r\n            while (resBr.ready()) {\r\n                line = resBr.readLine();\r\n                if (line.charAt(0) == restId) {\r\n                    resLines.add(line);\r\n                }\r\n            }\r\n            resBr.close();\r\n\r\n            String dateString = \"\";\r\n            String timeString = \"\";\r\n            ArrayList<String> freeTablesID = new ArrayList<String>();\r\n\r\n            for (int i = 0; i < resLines.size() ; i++) {\r\n                String[] comp = resLines.get(i).split(\",\");\r\n                dateString = comp[5];\r\n                timeString = comp[6];\r\n                if (dateString != date || timeString != time) {\r\n                    freeTablesID.add(comp[1]);\r\n                }\r\n            }\r\n\r\n            ArrayList<String> freeTables = new ArrayList<String>();\r\n            for (int j = 0; j < freeTablesID.size(); j++) {\r\n                \r\n            \r\n            for (int i = 0; i < tableLines.size(); i++) {\r\n                String tableChar = Character.toString(tableLines.get(i).charAt(2));\r\n                if (tableChar == freeTablesID.get(j)) {\r\n                    freeTables.add(tableLines.get(i));\r\n                }\r\n            }}\r\n\r\n            \r\n        for (int i = 0; i < freeTables.size(); i++) {\r\n            tablesString += freeTables.get(i);\r\n            tablesString += \",\\n\";\r\n        }\r\n\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n        \r\n\r\n        return tablesString;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/cs4013/Reservation.java b/src/main/java/com/cs4013/Reservation.java
+--- a/src/main/java/com/cs4013/Reservation.java	
++++ b/src/main/java/com/cs4013/Reservation.java	
+@@ -1,71 +1,273 @@
+ package com.cs4013;
+ 
+-import java.io.BufferedReader;
+-import java.io.File;
+-import java.io.FileReader;
+-import java.io.FileWriter;
++import java.io.*;
++import java.time.LocalDateTime;
++import java.time.format.DateTimeFormatter;
+ import java.util.ArrayList;
++import java.util.Scanner;
++import java.util.UUID;
+ 
+ public class Reservation {
+-    File resFile = new File("src/storage/Reservations.csv");
+-    File tableFile = new File("src/storage/Tables.csv");
++
++    private Scanner scanner = new Scanner(System.in);
++    private File reservations = new File("src/storage/Reservations.csv");
++    private File tables = new File("src/storage/Tables.csv");
++    private DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm");
++    private int restaurantID;
++    private Account lastUsedAccount;
++
++    public Reservation (int restaurantID, Account lastUsedAccount) {
++        this.restaurantID = restaurantID;
++        this.lastUsedAccount = lastUsedAccount;
++    }
++
++    /** Prompts the user with a multiple choice question.
++     * Validates whether their answer is acceptable.
++     *
++     * @param prompt A question to prompt the user.
++     * @param min Minimum value to validate against.
++     * @param max Maximum value to validate against.
++     * @return The value for their selected option.
++     */
++    private int prompt (String prompt, int min, int max) {
++
+ 
+-    ArrayList<Guests> guestList = new ArrayList<Guests>();
+-    
+-    /** 
+-     * @param name
+-     * @param date
+-     * @param phoneNum
+-     * @param guestNum
+-     * @param restId
+-     * @param time
+-     * @param tableId
+-     * 
+-     * creates new guest object and writes it to a csv file
++        String input = "";
++        int response = 0;
++
++        do {
++            try {
++                System.out.print(prompt);
++                input = scanner.nextLine().trim();
++                response = Integer.parseInt(input);
++                if (response >= min || response <= max) {
++                    return response;
++                }
++            } catch (Exception e) {
++                System.out.println("--- Invalid value, please try again. ---");
++            }
++        } while (true);
++
++    }
++
++    /** Prompts the user for a date value in the format "uuuu-MM-dd HH:mm".
++     *
++     * @return The value they inputted.
+      */
+-    public void addReservation(String name, String date, int phoneNum, int guestNum, int restId, String time, int tableId) {
+-        Guests guests = new Guests(name, date, phoneNum, guestNum, restId,time,tableId);
+-        guestList.add(guests);
+-        String[] guestString = guests.guestsToString().split(",");
+-        try {
+-            FileWriter out = new FileWriter(resFile, true);
+-            for (int i = 0; i < guestString.length; i++) {
+-                out.write(guestString[i]);
+-                out.write(",");
+-            }
+-            out.write("\n");
+-            out.flush();
+-            out.close();
++    public void promptDate() {
++
++        String input = "";
++        LocalDateTime response;
++
++        do {
++            try {
++                System.out.print("""
++                        Please enter the date and time you'd like to reserve
++                        (in the format of yyyy-mm-dd hh:mm, e.g. 2022-12-20 18:45 ):\040""");
++                input = scanner.nextLine().trim();
++                response = LocalDateTime.parse(input, dateTimeFormat);
++                // could cause problems if formats dont match
++                if (!(response.isBefore(LocalDateTime.now()))) {
++                    break;
++                }
++                System.out.println("--- That time has passed! Please try again. ---");
++            } catch (Exception e) {
++                System.out.println("--- Invalid value, please try again. ---");
++            }
++        } while (true);
++
++        printAvailableTables(response);
++    }
++
++    /** Prints out any available tables within a 2-hour window of a certain time.
++     *
++     * @param date Date is used to check for tables that are reserved.
++     */
++    private void printAvailableTables (LocalDateTime date) {
++
++        System.out.println("""
++                Available tables:
++                Table Number | Capacity""");
++        ArrayList<String> availableTables = checkAvailableTables(date);
++        for (String s : availableTables) {
++            System.out.println(s);
++        }
++        reserveTable(availableTables, date);
++
++    }
++
++    /** Choose a table to reserve.
++     *
++     * @param availableTables Tables that are available to reserve.
++     * @return Int array containing the row where the table number and capacity are located.
++     */
++    private int[] chooseTable(ArrayList<String> availableTables) {
++
++        String firstLine = availableTables.get(0);
++        String lastLine = availableTables.get(availableTables.size() - 1);
++        int tableChosen = 0;
++
++        do {
++            int i = 0;
++            tableChosen = prompt("Please enter the Table Number of the table you'd like to reserve: ",
++                    Integer.parseInt(firstLine.substring(0, firstLine.indexOf(","))),
++                    Integer.parseInt(lastLine.substring(0, lastLine.indexOf(","))));
++            for (String s : availableTables) {
++                if (Integer.parseInt(s.substring(0, s.indexOf(","))) == tableChosen) {
++                    return new int[]{ i, tableChosen };
++                }
++                i++;
++            }
++            System.out.println("--- Invalid value, please try again. ---");
++        } while (true);
++
++    }
++
++    /** Reserves a table.
++     *
++     * @param availableTables Tables that are available to reserve.
++     * @param date Date/Time that the table will be reserved for.
++     */
++    private void reserveTable(ArrayList<String> availableTables, LocalDateTime date) {
++
++        String reservationID = UUID.randomUUID().toString();
++        int[] tableChosen = chooseTable(availableTables);
++        String sub = availableTables.get(tableChosen[0]);
++        int capacity = Integer.parseInt(sub.substring(sub.indexOf(",") + 1, sub.length()));
++        String dateFormatted = date.format(dateTimeFormat);
++        String name = lastUsedAccount.getName();
++
++        String csvLine = String.format("%d,%s,%d,%s,%d,%s",
++                restaurantID, reservationID, capacity,
++                dateFormatted, tableChosen[1], name);
++
++        try (FileWriter fileWrite = new FileWriter(reservations, true)) {
++            fileWrite.write("\n" + csvLine);
++            System.out.println("Your reservation has been made!");
++        } catch (IOException e) {
++            e.printStackTrace();
++        }
++
++    }
++
++    /** Checks for tables that are not reserved.
++     *
++     * @param date Date is used to check for tables that are reserved.
++     * @return String arraylist containing information on non-reserved tables.
++     */
++    private ArrayList<String> checkAvailableTables (LocalDateTime date) {
++
++        ArrayList<Integer> notAvailable = checkUnavailableTables(date);
++        String line = "";
++        String[] lineArray = new String[0];
++        ArrayList<String> availableTables = new ArrayList<>();
++        boolean unavailableTable;
++
++        try(FileReader fileRead = new FileReader(tables);
++            BufferedReader bufferRead = new BufferedReader(fileRead);) {
++            bufferRead.readLine();
++            while (bufferRead.ready()) {
++                unavailableTable = false;
++                line = bufferRead.readLine();
++                lineArray = line.split(",");
++                if (Integer.parseInt(lineArray[0]) == restaurantID) {
++                    for (int table : notAvailable) {
++                        if (Integer.parseInt(lineArray[1]) == table) {
++                            unavailableTable = true;
++                        }
++                    }
++                    if (!unavailableTable) {
++                        availableTables.add(line.substring(line.indexOf(",") + 1, line.length()));
++                    }
++                }
++            }
++        } catch (IOException e) {
++            e.printStackTrace();
++        }
++        return availableTables;
++
++    }
++
++    /** Checks for unavailable tables.
++     *
++     * @param date Date is used to check for tables that are reserved.
++     * @return Integer arraylist containing table numbers of unavailable tables.
++     */
++    private ArrayList<Integer> checkUnavailableTables (LocalDateTime date) {
++
++        String[] line = new String[0];
++        ArrayList<Integer> tablesNotAvailable = new ArrayList<>();
++
++        try (FileReader fileRead = new FileReader(reservations);
++             BufferedReader bufferRead = new BufferedReader(fileRead);) {
++            bufferRead.readLine();
++            while (bufferRead.ready()) {
++                line = bufferRead.readLine().split(",");
++                if (Integer.parseInt(line[0]) == restaurantID) {
++                    if (isWithinRange(date, LocalDateTime.parse(line[3], dateTimeFormat))) {
++                        tablesNotAvailable.add(Integer.parseInt(line[4]));
++                    }
++                }
++            }
++        } catch (IOException e) {
++            e.printStackTrace();
++        }
++        return tablesNotAvailable;
++
++    }
++
++    /**
++     * Prints out all current reservations for Yum! restaurant.
++     */
++    public void printReservations () {
++
++        String line = "";
++        String[] lineArray = new String[0];
++        ArrayList<String> currentReservations = new ArrayList<>();
++        System.out.println("--- Your reservations: ---");
++
++        try (FileReader fileRead = new FileReader(reservations);
++             BufferedReader bufferRead = new BufferedReader(fileRead);) {
++            bufferRead.readLine();
++            while (bufferRead.ready()) {
++                line = bufferRead.readLine();
++                lineArray = line.split(",");
++                if (lineArray[5].equals(lastUsedAccount.getName())) {
++                    currentReservations.add(line);
++                }
++            }
++            for (String s : currentReservations) {
++                System.out.println(s);
++            }
+         } catch (Exception e) {
+             e.printStackTrace();
+-        } 
+-    }
++        }
+ 
+-    
+-    /** 
+-     * @param phoneNum
+-     * adds every line from the file into an array but skips the line containing the phone number of the 
+-     * reservation to be cancelled
++    }
++
++    /**
++     * Cancels all of the user's current reservations.
++     * (NOT WORKING!!! Currently removes all reservations regardless of user, needs to be fixed
++     * to only remove reservations made by the current user).
+      */
+-    public void cancelation(int phoneNum) {
++    public void cancelReservations (String name) {
+         ArrayList<String> lines = new ArrayList<String>();
+         String temp = "";
+-        String phoneString = Integer.toString(phoneNum);
+         try {
+-            FileReader fr = new FileReader(resFile);
++            FileReader fr = new FileReader(reservations);
+             BufferedReader br = new BufferedReader(fr);
+             while (br.ready()) {
+                 temp = br.readLine();
+-                if (!temp.contains(phoneString)) {
++                if (!temp.contains(name)) {
+                     lines.add(temp);
+                 }
+             }
+             br.close();
+-            FileWriter fw1 = new FileWriter(resFile, false);
++            FileWriter fw1 = new FileWriter(reservations, false);
+             fw1.write("");
+             fw1.flush();
+             fw1.close();
+-            FileWriter fw2 = new FileWriter(resFile, true);
++            FileWriter fw2 = new FileWriter(reservations, true);
+             for (int i = 0; i < lines.size(); i++) {
+                 fw2.write(lines.get(i));
+                 fw2.write("\n");
+@@ -78,101 +280,17 @@
+ 
+     }
+ 
+-    public String showReservation() {
+-        String line = "";
+-        ArrayList<String> lines = new ArrayList<>();
+-        String finalString = "";
+-        try {
+-            FileReader fr = new FileReader(resFile);
+-            BufferedReader br = new BufferedReader(fr);
+-            while (br.ready()) {
+-                line = br.readLine();
+-                lines.add(line);
+-            }
+-            br.close();
+-        } catch (Exception e) {
+-            e.printStackTrace();
+-        }
+-
+-        for (int i = 0; i < lines.size(); i++) {
+-            finalString += lines.get(i);
+-            finalString += "\n";
+-        }
+-
+-        return finalString;
+-    }
+-
+-    
+-    /** 
+-     * @param restId
+-     * @param time
+-     * @param date
+-     * @return String
+-     * 
+-     * allows the user to view tables that arent reserved
++    /** Checks whether a date is within 2-hours of another reserved date.
++     *
++     * @param wantedDate The date the user wants to reserve for.
++     * @param reservedDate The date currently reserved.
++     * @return True or false.
+      */
+-    public String tables(int restId, String time, String date) {
+-        String line = "";
+-        ArrayList<String> tableLines = new ArrayList<String>();
+-        ArrayList<String> resLines = new ArrayList<String>();
+-        String tablesString = "";
+-        try {
+-            FileReader tableFr = new FileReader(tableFile);
+-            BufferedReader tableBr = new BufferedReader(tableFr);
+-            while (tableBr.ready()) {
+-                line = tableBr.readLine();
+-                if (line.charAt(0) == restId) {
+-                    tableLines.add(line);
+-                }
+-            }
+-            tableBr.close();
+-            
+-            FileReader resFr = new FileReader(resFile);
+-            BufferedReader resBr = new BufferedReader(resFr);
+-            while (resBr.ready()) {
+-                line = resBr.readLine();
+-                if (line.charAt(0) == restId) {
+-                    resLines.add(line);
+-                }
+-            }
+-            resBr.close();
++    public boolean isWithinRange(LocalDateTime wantedDate, LocalDateTime reservedDate) {
++        LocalDateTime reservedDateMinusWindow = reservedDate.minusHours(2);
++        LocalDateTime reservedDatePlusWindow = reservedDate.plusHours(2);
++        return (wantedDate.isEqual(reservedDateMinusWindow) || wantedDate.isEqual(reservedDatePlusWindow))
++                || (wantedDate.isBefore(reservedDatePlusWindow) && wantedDate.isAfter(reservedDateMinusWindow));
+ 
+-            String dateString = "";
+-            String timeString = "";
+-            ArrayList<String> freeTablesID = new ArrayList<String>();
+-
+-            for (int i = 0; i < resLines.size() ; i++) {
+-                String[] comp = resLines.get(i).split(",");
+-                dateString = comp[5];
+-                timeString = comp[6];
+-                if (dateString != date || timeString != time) {
+-                    freeTablesID.add(comp[1]);
+-                }
+-            }
+-
+-            ArrayList<String> freeTables = new ArrayList<String>();
+-            for (int j = 0; j < freeTablesID.size(); j++) {
+-                
+-            
+-            for (int i = 0; i < tableLines.size(); i++) {
+-                String tableChar = Character.toString(tableLines.get(i).charAt(2));
+-                if (tableChar == freeTablesID.get(j)) {
+-                    freeTables.add(tableLines.get(i));
+-                }
+-            }}
+-
+-            
+-        for (int i = 0; i < freeTables.size(); i++) {
+-            tablesString += freeTables.get(i);
+-            tablesString += ",\n";
+-        }
+-
+-        } catch (Exception e) {
+-            e.printStackTrace();
+-        }
+-
+-        
+-
+-        return tablesString;
+-    }
+-}
+\ No newline at end of file
++    }
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"0d69447a-bd0d-4621-b07b-90ae5f678353\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cs4013/Restaurant.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cs4013/Restaurant.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2HjuViWeoNUzX6wgjnWKLr0GU04\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.0\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.0\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Omini\\OneDrive\\Documents\\Project_A\\CS4013\\src\\main\\java\\com\\cs4013\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"Account\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.cs4013.Account\" />\r\n      <module name=\"project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.cs4013.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Customer\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.cs4013.Customer\" />\r\n      <module name=\"project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.cs4013.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.cs4013.Main\" />\r\n      <module name=\"project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.cs4013.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"MenuTest\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.cs4013.MenuTest\" />\r\n      <module name=\"project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.cs4013.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"OrderTest\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.cs4013.OrderTest\" />\r\n      <module name=\"project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.cs4013.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Account\" />\r\n        <item itemvalue=\"Application.MenuTest\" />\r\n        <item itemvalue=\"Application.Customer\" />\r\n        <item itemvalue=\"Application.OrderTest\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"0d69447a-bd0d-4621-b07b-90ae5f678353\" name=\"Changes\" comment=\"\" />\r\n      <created>1668810846711</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1668810846711</updated>\r\n      <workItem from=\"1668810857132\" duration=\"370000\" />\r\n      <workItem from=\"1668811248532\" duration=\"172000\" />\r\n      <workItem from=\"1668874659100\" duration=\"8552000\" />\r\n      <workItem from=\"1668893895398\" duration=\"9000\" />\r\n      <workItem from=\"1669230012093\" duration=\"5425000\" />\r\n      <workItem from=\"1669283617042\" duration=\"4452000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.NumberFormatException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"8\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -127,6 +127,19 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <configuration default="true" type="JetRunConfigurationType">
++      <module name="project" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
++      <module name="project" />
++      <option name="filePath" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <recent_temporary>
+       <list>
+         <item itemvalue="Application.Main" />

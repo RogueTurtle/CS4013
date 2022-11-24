@@ -1,0 +1,279 @@
+Index: src/main/java/com/cs4013/Restaurant.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cs4013;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Scanner;\r\n\r\npublic class Restaurant {\r\n    private int restaurantId;\r\n    private Menu menu;\r\n    private ArrayList<Account> accounts;\r\n    private Reservation reservation;\r\n    private ArrayList<Chef> chefs;\r\n    private Guests[] guests; //Needed or nah?\r\n    private Customer[] customers;\r\n    private ArrayList<Order> orders;\r\n    private ArrayList<FrontStaff> frontStaffs;\r\n    private ArrayList<Owner> owners;\r\n    private static Scanner scanner;\r\n    private Account lastUsedAccount;\r\n\r\n    /**\r\n     * Creates a restaurant\r\n     * @param restaurantId\r\n     */\r\n\r\n    public Restaurant(int restaurantId) {\r\n        this.restaurantId = restaurantId;\r\n        menu = new Menu(restaurantId);\r\n        scanner = new Scanner(System.in);\r\n        accounts = new ArrayList<>();\r\n        orders = new ArrayList<>();\r\n        chefs = new ArrayList<>();\r\n        frontStaffs = new ArrayList<>();\r\n        lastUsedAccount = new Account();\r\n        owners = new ArrayList<>();\r\n    }\r\n\r\n    /**\r\n     * Takes the user to the restaurant login page\r\n     */\r\n\r\n    public void restaurantLoginPage() {\r\n        int response;\r\n        response = mainPrompt(\"Please enter Restaurant ID: \");\r\n        restaurantId = response;\r\n\r\n        while(!lastUsedAccount.isLoggedIn()) {\r\n            Account account = new Account();\r\n            lastUsedAccount = account;\r\n            response = mainPrompt(\"\"\"\r\n                     What Would you like to do?\r\n                     (1) Log-in\r\n                     (2) Sign-up\r\n                     >\\040\"\"\", 1, 2);\r\n            switch (response) {\r\n                case (1): {\r\n                    // go to login\r\n                    account.login();\r\n                    break;\r\n                }\r\n                case (2): {\r\n                    // go to sign up\r\n                    account.createAccount();\r\n                    accounts.add(account);\r\n                }\r\n            }\r\n        }\r\n        accounts.add(lastUsedAccount);\r\n        if(lastUsedAccount.getLevel() == 6) {\r\n            Owner owner = new Owner(lastUsedAccount.getName(), 282);\r\n            owners.add(owner);\r\n\r\n        }\r\n        else if(lastUsedAccount.getLevel() == 4) {\r\n            Chef chef = new Chef(lastUsedAccount.getName(), 344 ); //Phonenumber just a test\r\n            chefs.add(chef);\r\n\r\n        }\r\n        else if(lastUsedAccount.getLevel() == 3) {\r\n            FrontStaff fs1 = new FrontStaff(lastUsedAccount.getName(), 2344);\r\n            frontStaffs.add(fs1);\r\n        }\r\n        mainMenu();\r\n    }\r\n    /** Prompts the user with a multiple choice question.\r\n     * Validates whether their answer is acceptable.\r\n     *\r\n     * @param prompt A question to prompt the user.\r\n     * @return The value for their selected option.\r\n     */\r\n    private static int mainPrompt (String prompt) {\r\n\r\n        do {\r\n            try {\r\n                System.out.println(prompt);\r\n                String input = scanner.nextLine().trim();\r\n                return Integer.parseInt(input);\r\n            } catch (Exception e) {\r\n                System.out.println(\"--- Invalid value, please try again. ---\");\r\n            }\r\n        } while (true);\r\n\r\n    }\r\n\r\n    /** Prompts the user with a multiple choice question.\r\n     * Validates whether their answer is acceptable.\r\n     *\r\n     * @param prompt A question to prompt the user.\r\n     * @param min Minimum value to validate against.\r\n     * @param max Maximum value to validate against.\r\n     * @return The value for their selected option.\r\n     */\r\n\r\n    private static int mainPrompt (String prompt, int min, int max) {\r\n\r\n        do {\r\n            try {\r\n                System.out.print(prompt);\r\n                String input = scanner.nextLine().trim();\r\n                int response = Integer.parseInt(input);\r\n                if (response >= min || response <= max) {\r\n                    return response;\r\n                }\r\n            } catch (Exception e) {\r\n                System.out.println(\"--- Invalid value, please try again. ---\");\r\n            }\r\n        } while (true);\r\n\r\n    }\r\n\r\n    /**\r\n     * Restaurant's main menu\r\n     */\r\n    public void mainMenu() {\r\n        if(lastUsedAccount.isLoggedIn()) {\r\n            int response = mainPrompt(\"\"\"\r\n                Welcome! What would you like to do?\r\n                (1) Reservations\r\n                (2) Check menu\r\n                (3) Admin (requires authority)\r\n                >\"\"\",1 , 3);\r\n            switch (response) {\r\n                case (1): {\r\n                    Reservation res = new Reservation();\r\n                    System.out.print(res.showReservation() + \"\\n\");\r\n                    mainMenu();\r\n                    break;\r\n                }\r\n                case (2):{\r\n                    System.out.println(menu);\r\n                    mainMenu();\r\n                    break;\r\n                }\r\n                case (3):{\r\n                    if (lastUsedAccount.getLevel() >= 3) {\r\n                        adminMenu();\r\n                    } else {\r\n                        System.out.println(\"--- You do not have permission. ---\");\r\n                        mainMenu();\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    /**\r\n     * Restaurants admin menu\r\n     */\r\n\r\n    public void adminMenu() {\r\n        int response = mainPrompt(\"\"\"\r\n                What would you like to do?\r\n                (1) Promote/Demote a user\r\n                (2) Create an order\r\n                (3) Change order status\r\n                (4) Reserve a table\r\n                (5) Generate income statistics\r\n                (6) Go back\r\n                >\"\"\", 1, 5);\r\n        switch (response) {\r\n            case (1): {\r\n                // Promote a user (OWNER only)\r\n                if (lastUsedAccount.getLevel() == 6) {\r\n                    System.out.println(\"Please input the name of the account: \");\r\n                    String username = scanner.next();\r\n                    boolean levelChosen = false;\r\n                    for(Account account : accounts) {\r\n                        if(account.getName().equalsIgnoreCase(username)) {\r\n                            while(!levelChosen) {\r\n                                System.out.println(\"Please input the new level to be granted to \" + username);\r\n                                int level = scanner.nextInt();\r\n                                if(level < 6 && level >= 0) {\r\n                                    lastUsedAccount.setLevel(account, level);\r\n                                    levelChosen = true;\r\n                                } else {\r\n                                    System.out.println(\"Invalid level\");\r\n                                    System.out.printf(\"\"\"\r\n                                        Level 1: Customer\r\n                                        Level 2: Waiter\r\n                                        Level 3: Front Staff\r\n                                        Level 4: Chef\r\n                                        Level 5: Manager\r\n                                        Level 6: Owner\r\n                                        \"\"\");\r\n                                }\r\n                            }\r\n                        }\r\n                        else {\r\n                            System.out.println(\"No account called \" + username);\r\n                        }\r\n                    }\r\n                }\r\n                adminMenu();\r\n                break;\r\n            }\r\n                case (2): {\r\n                    // Create an order (FRONT_STAFF or OWNER)\r\n                    Order order = new Order(menu);\r\n                    if (lastUsedAccount.getLevel() == 3 || lastUsedAccount.getLevel() == 6) {\r\n                        if(frontStaffs.isEmpty()) {\r\n                            System.out.println(\"There are no front staff currently working\");;\r\n                        }\r\n                        for(FrontStaff fs : frontStaffs) {\r\n                            if(lastUsedAccount.getName().equalsIgnoreCase(fs.getName())) {\r\n                                System.out.println(menu);\r\n                                System.out.println(\"Name the meals ordered: \");\r\n                                String line = scanner.nextLine();\r\n                                String[] foods = line.split(\",\");\r\n                                fs.createOrder(order, foods);\r\n                                System.out.println(order);\r\n                            }\r\n                        }\r\n                    }\r\n                    else {\r\n                        System.out.println(\"You do not have permissions here\");\r\n                    }\r\n                    adminMenu();\r\n                    break;\r\n                }\r\n                case (3): {\r\n                    if(lastUsedAccount.getLevel() == 4 || lastUsedAccount.getLevel() == 6) {\r\n                        if(chefs.isEmpty()) {\r\n                            System.out.println(\"There are no chefs working right now\");\r\n                        }\r\n                        for(Chef chef : chefs) {\r\n                            if(lastUsedAccount.getName().equalsIgnoreCase(chef.getName())) {\r\n                                if(orders.isEmpty()) {\r\n                                    System.out.println(\"There are currently no orders\");\r\n                                }\r\n                                for(Order order : orders) {\r\n                                    System.out.println(orders.indexOf(order) + \": \" + order);\r\n                                }\r\n                                System.out.println(\"What order would you like to change?\");\r\n                                int orderNumber = scanner.nextInt();\r\n                                if(orders.get(orderNumber) != null) {\r\n                                    System.out.println(\"What is the status of the order?\");\r\n                                    String status = scanner.next();\r\n                                    orders.get(orderNumber).changeStatus(status);\r\n                                }\r\n                                else {\r\n                                    System.out.println(\"There is no order with this order number!\");\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n                    else {\r\n                        System.out.println(\"You do not have permissions here\");\r\n                    }\r\n                    adminMenu();\r\n                    break;\r\n                }\r\n                case (4): {\r\n                    Scanner scan = new  Scanner(System.in);\r\n                    System.out.println(\"Please enter table number: \");\r\n                    int tableNo = scan.nextInt();\r\n                    System.out.println(\"Please enter name for reservation: \");\r\n                    String name = scan.nextLine();\r\n                    System.out.println(\"Please Enter phone number for reservation: \");\r\n                    int number = scan.nextInt();\r\n                    System.out.println(\"Please enter the number of people in attendance: \");\r\n                    int noPeople = scan.nextInt();\r\n                    System.out.println(\"Please Enter the date of the reservation (dd/mm/yy): \");\r\n                    String date = scan.nextLine();\r\n                    System.out.print(\"Please enter the time for reservation (e.g 12:45): \");\r\n                    String time = scan.nextLine();\r\n                    scan.close();\r\n\r\n                    Reservation res = new Reservation();\r\n                    res.addReservation(name, date, number, noPeople, restaurantId, time, tableNo);\r\n                    adminMenu();\r\n                    break;\r\n                }\r\n                case (5): {\r\n                   // Go back to MainHub\r\n                   mainMenu();\r\n                }\r\n            }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/cs4013/Restaurant.java b/src/main/java/com/cs4013/Restaurant.java
+--- a/src/main/java/com/cs4013/Restaurant.java	
++++ b/src/main/java/com/cs4013/Restaurant.java	
+@@ -1,5 +1,6 @@
+ package com.cs4013;
+ 
++import java.time.LocalDateTime;
+ import java.util.ArrayList;
+ import java.util.Scanner;
+ 
+@@ -7,13 +8,11 @@
+     private int restaurantId;
+     private Menu menu;
+     private ArrayList<Account> accounts;
+-    private Reservation reservation;
++    private Reservation reservations;
+     private ArrayList<Chef> chefs;
+     private Guests[] guests; //Needed or nah?
+-    private Customer[] customers;
+     private ArrayList<Order> orders;
+     private ArrayList<FrontStaff> frontStaffs;
+-    private ArrayList<Owner> owners;
+     private static Scanner scanner;
+     private Account lastUsedAccount;
+ 
+@@ -31,7 +30,6 @@
+         chefs = new ArrayList<>();
+         frontStaffs = new ArrayList<>();
+         lastUsedAccount = new Account();
+-        owners = new ArrayList<>();
+     }
+ 
+     /**
+@@ -60,25 +58,19 @@
+                 case (2): {
+                     // go to sign up
+                     account.createAccount();
+-                    accounts.add(account);
+                 }
+             }
+         }
+         accounts.add(lastUsedAccount);
+-        if(lastUsedAccount.getLevel() == 6) {
+-            Owner owner = new Owner(lastUsedAccount.getName(), 282);
+-            owners.add(owner);
+-
+-        }
+-        else if(lastUsedAccount.getLevel() == 4) {
++        if(lastUsedAccount.getLevel() == 4) {
+             Chef chef = new Chef(lastUsedAccount.getName(), 344 ); //Phonenumber just a test
+             chefs.add(chef);
+-
+         }
+         else if(lastUsedAccount.getLevel() == 3) {
+             FrontStaff fs1 = new FrontStaff(lastUsedAccount.getName(), 2344);
+             frontStaffs.add(fs1);
+         }
++        reservations = new Reservation(restaurantId, lastUsedAccount);
+         mainMenu();
+     }
+     /** Prompts the user with a multiple choice question.
+@@ -127,6 +119,41 @@
+ 
+     }
+ 
++    public void reservationMenu() {
++
++        int response = mainPrompt("""
++                    What would you like to do?
++                    (1) Check available tables and reserve
++                    (2) Check reservations
++                    (3) Cancel reservations
++                    (4) Go back
++                    >\040""", 1, 4);
++        switch (response) {
++            case (1): {
++                // check available tables and reserve
++                reservations.promptDate();
++                reservationMenu();
++                break;
++            }
++            case (2): {
++                // check reservations on account
++                reservations.printReservations();
++                reservationMenu();
++                break;
++            }
++            case (3): {
++                // cancel reservations
++                reservations.cancelReservations(lastUsedAccount.getName());
++                reservationMenu();
++                break;
++            }
++            case (4): {
++                // go back
++                mainMenu();
++            }
++        }
++    }
++
+     /**
+      * Restaurant's main menu
+      */
+@@ -140,9 +167,7 @@
+                 >""",1 , 3);
+             switch (response) {
+                 case (1): {
+-                    Reservation res = new Reservation();
+-                    System.out.print(res.showReservation() + "\n");
+-                    mainMenu();
++                    reservationMenu();
+                     break;
+                 }
+                 case (2):{
+@@ -175,7 +200,7 @@
+                 (4) Reserve a table
+                 (5) Generate income statistics
+                 (6) Go back
+-                >""", 1, 5);
++                >""", 1, 6);
+         switch (response) {
+             case (1): {
+                 // Promote a user (OWNER only)
+@@ -212,87 +237,67 @@
+                 adminMenu();
+                 break;
+             }
+-                case (2): {
+-                    // Create an order (FRONT_STAFF or OWNER)
+-                    Order order = new Order(menu);
+-                    if (lastUsedAccount.getLevel() == 3 || lastUsedAccount.getLevel() == 6) {
+-                        if(frontStaffs.isEmpty()) {
+-                            System.out.println("There are no front staff currently working");;
+-                        }
+-                        for(FrontStaff fs : frontStaffs) {
+-                            if(lastUsedAccount.getName().equalsIgnoreCase(fs.getName())) {
+-                                System.out.println(menu);
+-                                System.out.println("Name the meals ordered: ");
+-                                String line = scanner.nextLine();
+-                                String[] foods = line.split(",");
+-                                fs.createOrder(order, foods);
+-                                System.out.println(order);
+-                            }
+-                        }
+-                    }
+-                    else {
+-                        System.out.println("You do not have permissions here");
+-                    }
+-                    adminMenu();
+-                    break;
+-                }
+-                case (3): {
+-                    if(lastUsedAccount.getLevel() == 4 || lastUsedAccount.getLevel() == 6) {
+-                        if(chefs.isEmpty()) {
+-                            System.out.println("There are no chefs working right now");
+-                        }
+-                        for(Chef chef : chefs) {
+-                            if(lastUsedAccount.getName().equalsIgnoreCase(chef.getName())) {
+-                                if(orders.isEmpty()) {
+-                                    System.out.println("There are currently no orders");
+-                                }
+-                                for(Order order : orders) {
+-                                    System.out.println(orders.indexOf(order) + ": " + order);
+-                                }
+-                                System.out.println("What order would you like to change?");
+-                                int orderNumber = scanner.nextInt();
+-                                if(orders.get(orderNumber) != null) {
+-                                    System.out.println("What is the status of the order?");
+-                                    String status = scanner.next();
+-                                    orders.get(orderNumber).changeStatus(status);
+-                                }
+-                                else {
+-                                    System.out.println("There is no order with this order number!");
+-                                }
++            case (2): {
++                // Create an order (FRONT_STAFF or OWNER)
++                Order order = new Order(menu);
++                if (lastUsedAccount.getLevel() == 3|| lastUsedAccount.getLevel() == 6) {
++                    for(FrontStaff fs : frontStaffs) {
++                        if(lastUsedAccount.getName().equalsIgnoreCase(fs.getName())) {
++                            System.out.println(menu);
++                            System.out.println("Name the meals ordered: ");
++                            String line = scanner.nextLine();
++                            String[] foods = line.split(",");
++                            fs.createOrder(order, foods);
++                            System.out.println(order);
++                        }
++                    }
++                }
++                else {
++                    System.out.println("You do not have permissions here");
++                }
++                adminMenu();
++                break;
++            }
++            case (3): {
++                if(lastUsedAccount.getLevel() == 4) {
++                    for(Chef chef : chefs) {
++                        if(lastUsedAccount.getName().equalsIgnoreCase(chef.getName())) {
++                            for(Order order : orders) {
++                                System.out.println(orders.indexOf(order) + ": " + order);
++                            }
++                            System.out.println("What order would you like to change?");
++                            int orderNumber = scanner.nextInt();
++                            if(orders.get(orderNumber) != null) {
++                                System.out.println("What is the status of the order?");
++                                String status = scanner.next();
++                                orders.get(orderNumber).changeStatus(status);
++                            }
++                            else {
++                                System.out.println("There is no order with this order number!");
+                             }
+                         }
+-                    }
+-                    else {
+-                        System.out.println("You do not have permissions here");
++                        else {
++                            System.out.println("You do not have permissions here");
++                        }
+                     }
+-                    adminMenu();
+-                    break;
+-                }
+-                case (4): {
+-                    Scanner scan = new  Scanner(System.in);
+-                    System.out.println("Please enter table number: ");
+-                    int tableNo = scan.nextInt();
+-                    System.out.println("Please enter name for reservation: ");
+-                    String name = scan.nextLine();
+-                    System.out.println("Please Enter phone number for reservation: ");
+-                    int number = scan.nextInt();
+-                    System.out.println("Please enter the number of people in attendance: ");
+-                    int noPeople = scan.nextInt();
+-                    System.out.println("Please Enter the date of the reservation (dd/mm/yy): ");
+-                    String date = scan.nextLine();
+-                    System.out.print("Please enter the time for reservation (e.g 12:45): ");
+-                    String time = scan.nextLine();
+-                    scan.close();
+-
+-                    Reservation res = new Reservation();
+-                    res.addReservation(name, date, number, noPeople, restaurantId, time, tableNo);
+-                    adminMenu();
+-                    break;
+-                }
+-                case (5): {
+-                   // Go back to MainHub
+-                   mainMenu();
+-                }
+-            }
++                }
++                adminMenu();
++                break;
++            }
++            case (4): {
++                // Reserve a table (FRONT or OWNER or CUSTOMER)
++                adminMenu();
++                break;
++            }
++            case (5): {
++                // Generate income statistics (OWNER only)
++                adminMenu();
++                break;
++            }
++            case (6): {
++                // Go back to MainHub
++                mainMenu();
++            }
++        }
+     }
+-}
++}
+\ No newline at end of file

@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_24_11_2022_11_45_[Changes]1" date="1669290313474" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_11_2022_11_45_[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 24/11/2022 11:45 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/cs4013/Reservation.class" />
+    <option name="AFTER_PATH" value="target/classes/com/cs4013/Reservation.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_11_2022_11_45_[Changes]1/Reservation.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/cs4013/Customer.class" />
+    <option name="AFTER_PATH" value="target/classes/com/cs4013/Customer.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_11_2022_11_45_[Changes]1/Customer.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/cs4013/Bill.class" />
+    <option name="AFTER_PATH" value="target/classes/com/cs4013/Bill.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_11_2022_11_45_[Changes]1/Bill.class" />
+  </binary>
+</changelist>
