@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0d69447a-bd0d-4621-b07b-90ae5f678353" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/MenuTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/MenuTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Account.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +56,7 @@
       <recent name="C:\Users\Omini\OneDrive\Documents\Project_A\CS4013\src\main\java\com\cs4013" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MenuTest">
+  <component name="RunManager" selected="Application.Account">
     <configuration name="Account" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.cs4013.Account" />
       <module name="project" />
@@ -126,9 +124,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Account" />
         <item itemvalue="Application.MenuTest" />
         <item itemvalue="Application.Customer" />
-        <item itemvalue="Application.Account" />
         <item itemvalue="Application.OrderTest" />
         <item itemvalue="Application.Login" />
       </list>
@@ -171,11 +169,6 @@
           <properties class="java.lang.NumberFormatException" package="java.lang" />
           <option name="timeStamp" value="8" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cs4013/Account.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

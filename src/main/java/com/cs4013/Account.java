@@ -20,11 +20,13 @@ public class Account {
         Account account2 = new Account();
         account.login();
         account2.createAccount();
-        account.setLevel(account2, 4);
+        //account.setLevel(account2, 4);
+        account.deleteAccount("xd");
     }
 
    public void login() {
         loggedIn = false;
+       System.out.println("LOG-IN\n" + "------------------");
         enterUsernamePasswordPrompt();
         try {
            String line = "";
@@ -32,7 +34,6 @@ public class Account {
 
            while((line = br.readLine()) != null) {
                String[] logins = line.split(",");
-               System.out.println("Username: " + logins[0] + " Password: " + logins[1]);
                if(name.equalsIgnoreCase(logins[0]) && password.equals(logins[1])) {
                     loggedIn = true;
                     this.name = name;
@@ -45,7 +46,7 @@ public class Account {
                }
            }
            if(!loggedIn) {
-               System.out.println("Error, incorrect username of password"); 
+               System.out.println("Error, incorrect username or password");
            }
            br.close();
        }
@@ -59,6 +60,7 @@ public class Account {
    }
 
    public void createAccount() {
+       System.out.println("SIGN-UP\n" + "------------------");
        enterUsernamePasswordPrompt();
        try {
            //FileOutputStream fos = new FileOutputStream(loginFile, true);
@@ -100,7 +102,7 @@ public class Account {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter Username:");
         name = scan.next();
-        System.out.println("Enter Password:");
+        System.out.println("Enter Password(Case-Sensitive):");
         password = scan.next();
     }
 
@@ -187,7 +189,59 @@ public class Account {
         }
     }
 
-    public void deleteAccount() {
-
+    public void deleteAccount(String username) {
+        if (level == 4 || name.equalsIgnoreCase(username)) {
+            deleteCSV(username);
+        }
     }
+
+    public void deleteCSV(String username) {
+        String tempFilePath = "src/storage/loginTemp.csv";
+        File newFile = new File(tempFilePath);
+        File oldFile = loginFile;
+
+        String name;
+        String password;
+        String level;
+
+        try {
+            FileWriter fileWriter = new FileWriter(tempFilePath, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
+            Scanner scan = new Scanner(new File("src/storage/Login.csv"));
+            scan.useDelimiter("[,\n]");
+
+            while (scan.hasNext()) {
+                name = scan.next();
+                password = scan.next();
+                level = scan.next();
+
+                if (name.equals(username)) {
+
+                } else {
+                    printWriter.print(name + "," + password + "," + level + "\n");
+                }
+            }
+            scan.close();
+            printWriter.flush();
+            printWriter.close();
+            bufferedWriter.close();
+            //oldFile.delete() not working possibly due to intelliJ not having permission to use .delete. I closed all writers/readers so thats not an issue.
+            //Hence the following code. However newFile.delete() works because its not factored.
+            Scanner scanner = new Scanner(new File(tempFilePath));
+            FileWriter fw = new FileWriter(loginFile, false);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            while (scanner.hasNext()) {
+                pw.println(scanner.next()); //Copies all code from loginTemp to Login.
+            }
+            scanner.close();
+            pw.flush();
+            pw.close();
+            newFile.delete();
+        } catch (Exception e) {
+
+        }
+    }
+
 }
