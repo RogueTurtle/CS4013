@@ -1,10 +1,13 @@
 package com.cs4013;
 
+import java.text.NumberFormat;
+
 public class Food {
 
     private String name;
     private String type;
     private double price;
+    private NumberFormat currency = NumberFormat.getCurrencyInstance();
 
     protected Food(String name, String type, double price) {
         if(type.toUpperCase().contains("STARTER")) {
@@ -30,7 +33,7 @@ public class Food {
 
     @Override
     public String toString() {
-        return name + ": €" + price;
+        return name + ": " + currency.format(price);
     }
 
     protected double getPrice() {
