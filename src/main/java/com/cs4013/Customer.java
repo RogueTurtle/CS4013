@@ -49,7 +49,7 @@ public class Customer extends Person{
                 quit = foodString;
                 scan.close();
             } else {
-                order.addFood(foodString);
+                order.addMeal(foodString);
             }
         }
         return order;

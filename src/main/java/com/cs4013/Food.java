@@ -4,7 +4,6 @@ public class Food {
 
     private String name;
     private String type;
-    private String description;
     private double price;
 
     protected Food(String name, String type, double price) {

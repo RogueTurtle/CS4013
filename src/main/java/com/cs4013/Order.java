@@ -16,26 +16,35 @@ public class Order {
     private double totalPrice; //May be needed not sure yet
     private Menu menu;
 
+    /**
+     * Creates an order
+     * @param menu the menu the order is coming from
+     */
+
     public Order(Menu menu) {
         this.menu = menu;
         totalPrice = 0;
         status = "CREATED";
     }
 
-    public Order(Menu menu, ArrayList<Food> foodsOrdered) {
-        this.menu = menu;
-        this.foodsOrdered = foodsOrdered;
-    }
+    /**
+     * Adds meals to the order
+     * @param meal Name of the meal to be added
+     */
 
-    public void addFood(String foodName) {
+    public void addMeal(String meal) {
         for(Food food : menu.getAllMeals()) {
-            if(food.getName().equals(foodName)) {
+            if(food.getName().equals(meal)) {
                 foodsOrdered.add(food);
                 totalPrice += food.getPrice();
             }
         }
     }
 
+    /**
+     * Changes the status of the order
+     * @param status new status of order
+     */
     //Trying to make changing statuses flexible
     public void changeStatus(String status) {
         String newStatus = status.toUpperCase();

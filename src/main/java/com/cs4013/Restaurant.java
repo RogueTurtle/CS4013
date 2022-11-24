@@ -16,6 +16,11 @@ public class Restaurant {
     private static Scanner scanner;
     private Account lastUsedAccount;
 
+    /**
+     * Creates a restaurant
+     * @param restaurantId
+     */
+
     public Restaurant(int restaurantId) {
         this.restaurantId = restaurantId;
         menu = new Menu(restaurantId);
@@ -26,6 +31,10 @@ public class Restaurant {
         frontStaffs = new ArrayList<>();
         lastUsedAccount = new Account();
     }
+
+    /**
+     * Takes the user to the restaurant login page
+     */
 
     public void restaurantLoginPage() {
         int response;
@@ -109,6 +118,10 @@ public class Restaurant {
 
     }
 
+    /**
+     * Restaurant's main menu
+     */
+
     public void mainMenu() {
         if(lastUsedAccount.isLoggedIn()) {
             System.out.printf("""
@@ -130,6 +143,10 @@ public class Restaurant {
             }
         }
     }
+
+    /**
+     * Restaurants admin menu
+     */
 
     public void adminMenu() {
         int response;

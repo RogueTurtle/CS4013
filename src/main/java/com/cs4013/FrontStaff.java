@@ -19,7 +19,7 @@ public class FrontStaff extends Staff{
 
     public void createOrder(Order order, String[] foods) {
         for (int i = 0; i < foods.length; i++) {
-            order.addFood(foods[i]);
+            order.addMeal(foods[i]);
         }
         orders.add(order);
     }

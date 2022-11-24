@@ -11,6 +11,9 @@ public class Account {
    private boolean loggedIn = false;
    private int level; //0 = guest, 1 = customer/user, 2 = waiter, 3 = frontStaff, 4 = chef, 5. manager, 6. owner
 
+    /**
+     * Creates account object thats information is Null at first
+     */
     public Account() {
         loginFile = new File("src/storage/Login.csv");
     }
@@ -23,6 +26,10 @@ public class Account {
         //account.setLevel(account2, 4);
         account.deleteAccount("xd");
     }
+
+    /**
+     * Allows user to log in using prompts
+     */
 
    public void login() {
         loggedIn = false;
@@ -59,6 +66,10 @@ public class Account {
        }
 
    }
+
+    /**
+     * Allows user to create account using prompts
+     */
 
    public void createAccount() {
        System.out.println("SIGN-UP\n" + "------------------");
@@ -99,13 +110,26 @@ public class Account {
         return loggedIn;
     }
 
-    public void enterUsernamePasswordPrompt() {
+    private void enterUsernamePasswordPrompt() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter Username:");
         name = scan.next();
         System.out.println("Enter Password(Case-Sensitive):");
         password = scan.next();
     }
+
+    /**
+     * Allows admin user to setLevel of another account
+     * @param account The account you want to modify
+     * @param level The level you want to set the other account too(1-6)
+     *              Level 0: guest
+     *              Level 1: customer/user
+     *              Level 2: waiter
+     *              Level 3  frontStaff
+     *              Level 4: chef
+     *              Level 5: manager
+     *              Level 6: owner
+     */
 
     public void setLevel(Account account, int level) {
         //If owner(level 6)
@@ -138,7 +162,7 @@ public class Account {
         }
     }
 
-    public void editCSV(String editTerm, String newTerm) {
+    private void editCSV(String editTerm, String newTerm) {
         String tempFilePath = "src/storage/loginTemp.csv";
         File newFile = new File(tempFilePath);
         File oldFile = loginFile;
@@ -196,7 +220,7 @@ public class Account {
         }
     }
 
-    public void deleteCSV(String username) {
+    private void deleteCSV(String username) {
         String tempFilePath = "src/storage/loginTemp.csv";
         File newFile = new File(tempFilePath);
         File oldFile = loginFile;

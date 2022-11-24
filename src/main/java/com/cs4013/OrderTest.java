@@ -12,10 +12,10 @@ public class OrderTest {
 
         System.out.println(menu);
 
-        order.addFood("Porridge");
-        order.addFood("Porridge");
-        order.addFood("Porridge");
-        order.addFood("Porridge");
+        order.addMeal("Porridge");
+        order.addMeal("Porridge");
+        order.addMeal("Porridge");
+        order.addMeal("Porridge");
         System.out.println(order);
     }
 }

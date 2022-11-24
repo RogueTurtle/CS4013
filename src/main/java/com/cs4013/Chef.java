@@ -15,6 +15,12 @@ public class Chef extends Staff{
         return super.getPhoneNum();
     }
 
+    /**
+     * Changes the status of an order
+     * @param status
+     * @param order
+     */
+
     public void changeOrderStatus(String status, Order order) {
         order.changeStatus(status);
     }

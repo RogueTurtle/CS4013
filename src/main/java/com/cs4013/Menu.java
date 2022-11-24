@@ -16,11 +16,20 @@ public class Menu {
     private ArrayList<Food> dessert = new ArrayList<>();
     private ArrayList<Food> allMeals = new ArrayList<>();
 
+    /**
+     * Creates a menu for the restaurant of restaurantID
+     * @param restaurantID
+     */
     public Menu(int restaurantID) {
         this.restaurantID = restaurantID;
         searchForMenu(restaurantID);
 
     }
+
+    /**
+     * Searches for menus already created for the restaurant ID
+     * @param restaurantID The restaurant ID
+     */
 
     private void searchForMenu(int restaurantID) {
         try {
@@ -38,6 +47,13 @@ public class Menu {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Adds a meal to the menu
+     * @param name Name of meal
+     * @param type Type of meal(starter, soups, main, dessert)
+     * @param price Price of meal(double)
+     */
 
     //This method is used to add a meal to allMeals and into one of the specified categories
     public void addMeal(String name, String type, double price) {
@@ -111,6 +127,11 @@ public class Menu {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Removes meal from menu
+     * @param meal The name of the meal you want to remove
+     */
 
     //Removes meals when the name of the meal is specified
     public void removeMeal(String meal) {
