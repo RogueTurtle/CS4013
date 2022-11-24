@@ -121,25 +121,31 @@ public class Restaurant {
     /**
      * Restaurant's main menu
      */
-
     public void mainMenu() {
         if(lastUsedAccount.isLoggedIn()) {
-            System.out.printf("""
+            int response = mainPrompt("""
                 Welcome! What would you like to do?
                 (1) Reservations
                 (2) Check menu
                 (3) Admin (requires authority)
-                >""");
-            Scanner scan = new Scanner(System.in);
-            if(scan.nextInt() == 1) {
-                //Show reservations
-            }
-            else if(scan.nextInt() == 2) {
-                System.out.println(menu);
-                mainMenu();
-            }
-            else if(scan.nextInt() == 3 && lastUsedAccount.getLevel() >= 3) {
-                adminMenu();
+                >""",1 , 3);
+            switch (response) {
+                case (1): {
+                    //Show reservations
+
+                }
+                case (2):{
+                    System.out.println(menu);
+                    mainMenu();
+                }
+                case (3):{
+                    if (lastUsedAccount.getLevel() >= 3) {
+                        adminMenu();
+                    } else {
+                        System.out.println("--- You do not have permission. ---");
+                        mainMenu();
+                    }
+                }
             }
         }
     }
