@@ -266,24 +266,24 @@ public class Restaurant {
                     break;
                 }
                 case (4): {
-                    Scanner scan = new  Scanner(System.in);
+                    
                     System.out.println("Please enter table number: ");
-                    int tableNo = scan.nextInt();
+                    int tableNo = scanner.nextInt();
                     System.out.println("Please enter name for reservation: ");
-                    String name = scan.nextLine();
+                    String name = scanner.next();
                     System.out.println("Please Enter phone number for reservation: ");
-                    int number = scan.nextInt();
+                    int number = scanner.nextInt();
                     System.out.println("Please enter the number of people in attendance: ");
-                    int noPeople = scan.nextInt();
+                    int noPeople = scanner.nextInt();
                     System.out.println("Please Enter the date of the reservation (dd/mm/yy): ");
-                    String date = scan.nextLine();
+                    String date = scanner.next();
                     System.out.print("Please enter the time for reservation (e.g 12:45): ");
-                    String time = scan.nextLine();
-                    scan.close();
+                    String time = scanner.next();
+                    
 
                     Reservation res = new Reservation();
                     res.addReservation(name, date, number, noPeople, restaurantId, time, tableNo);
-                    adminMenu();
+                    //adminMenu();
                     break;
                 }
                 case (5): {
