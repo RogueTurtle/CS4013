@@ -133,16 +133,19 @@ public class Restaurant {
                 // check available tables and reserve
                 reservations.promptDate();
                 reservationMenu();
+                break;
             }
             case (2): {
                 // check reservations on account
                 reservations.printReservations();
                 reservationMenu();
+                break;
             }
             case (3): {
                 // cancel reservations
                 reservations.cancelReservations(lastUsedAccount.getName());
                 reservationMenu();
+                break;
             }
             case (4): {
                 // go back
@@ -165,10 +168,12 @@ public class Restaurant {
             switch (response) {
                 case (1): {
                     reservationMenu();
+                    break;
                 }
                 case (2):{
                     System.out.println(menu);
                     mainMenu();
+                    break;
                 }
                 case (3):{
                     if (lastUsedAccount.getLevel() >= 3) {

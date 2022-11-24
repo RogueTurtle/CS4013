@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0d69447a-bd0d-4621-b07b-90ae5f678353" name="Changes" comment="Implemented reservations. Deleted useless Customer class.">
+    <list default="true" id="0d69447a-bd0d-4621-b07b-90ae5f678353" name="Changes" comment="Fixed reservations.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/README.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/storage/Reservations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/Reservations.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669288742855</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixed reservations.">
+      <created>1669289890342</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669289890342</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,7 +198,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implemented reservations. Deleted useless Customer class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented reservations. Deleted useless Customer class." />
+    <MESSAGE value="Fixed reservations." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed reservations." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
