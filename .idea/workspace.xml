@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0d69447a-bd0d-4621-b07b-90ae5f678353" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/storage/Reservations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/Reservations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Restaurant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Restaurant.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
