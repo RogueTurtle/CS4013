@@ -8,10 +8,9 @@ public class Restaurant {
     private int restaurantId;
     private Menu menu;
     private ArrayList<Account> accounts;
-    private Reservations reservations;
+    private Reservation reservations;
     private ArrayList<Chef> chefs;
     private Guests[] guests; //Needed or nah?
-    private Customer[] customers;
     private ArrayList<Order> orders;
     private ArrayList<FrontStaff> frontStaffs;
     private static Scanner scanner;
@@ -25,7 +24,6 @@ public class Restaurant {
     public Restaurant(int restaurantId) {
         this.restaurantId = restaurantId;
         menu = new Menu(restaurantId);
-        reservations = new Reservations();
         scanner = new Scanner(System.in);
         accounts = new ArrayList<>();
         orders = new ArrayList<>();
@@ -72,6 +70,7 @@ public class Restaurant {
             FrontStaff fs1 = new FrontStaff(lastUsedAccount.getName(), 2344);
             frontStaffs.add(fs1);
         }
+        reservations = new Reservation(restaurantId, lastUsedAccount);
         mainMenu();
     }
     /** Prompts the user with a multiple choice question.
@@ -121,36 +120,34 @@ public class Restaurant {
     }
 
     public void reservationMenu() {
-        public void options() {
 
-            int response = mainPrompt("""
+        int response = mainPrompt("""
                     What would you like to do?
                     (1) Check available tables and reserve
                     (2) Check reservations
                     (3) Cancel reservations
                     (4) Go back
                     >\040""", 1, 4);
-            switch (response) {
-                case (1): {
-                    // check available tables and reserve
-                    reservations.promptDate("""
-                        Please enter the date and time you'd like to reserve
-                        (in the format of yyyy-mm-dd hh:mm, e.g. 2022-12-20 18:45 ):\040""");
-                }
-                case (2): {
-                    // check reservations on account
-                    printReservations();
-                }
-                case (3): {
-                    // cancel reservations
-                    cancelReservations();
-                }
-                case (4): {
-                    // go back
-                    mainMenu();
-                }
+        switch (response) {
+            case (1): {
+                // check available tables and reserve
+                reservations.promptDate();
+                reservationMenu();
             }
-
+            case (2): {
+                // check reservations on account
+                reservations.printReservations();
+                reservationMenu();
+            }
+            case (3): {
+                // cancel reservations
+                reservations.cancelReservations(lastUsedAccount.getName());
+                reservationMenu();
+            }
+            case (4): {
+                // go back
+                mainMenu();
+            }
         }
     }
 
@@ -167,8 +164,7 @@ public class Restaurant {
                 >""",1 , 3);
             switch (response) {
                 case (1): {
-                    //Show reservations
-
+                    reservationMenu();
                 }
                 case (2):{
                     System.out.println(menu);

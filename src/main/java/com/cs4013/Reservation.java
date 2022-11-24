@@ -1,26 +1,24 @@
 package com.cs4013;
 
 import java.io.*;
-import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
 
-public class Reservations {
+public class Reservation {
 
     private Scanner scanner = new Scanner(System.in);
-    private File reservations = new File("src/storage/reservations.csv");
-    private File reservationReset = new File("src/storage/reservationReset.csv");
-    private File tables = new File("src/storage/tables.csv");
+    private File reservations = new File("src/storage/Reservations.csv");
+    private File tables = new File("src/storage/Tables.csv");
     private DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm");
-    private Account account;
+    private int restaurantID;
+    private Account lastUsedAccount;
 
-    /**
-     * Constructor for Reservations
-     */
-    public Reservations () {
+    public Reservation (int restaurantID, Account lastUsedAccount) {
+        this.restaurantID = restaurantID;
+        this.lastUsedAccount = lastUsedAccount;
     }
 
     /** Prompts the user with a multiple choice question.
@@ -54,19 +52,21 @@ public class Reservations {
 
     /** Prompts the user for a date value in the format "uuuu-MM-dd HH:mm".
      *
-     * @param prompt A question to prompt the user.
      * @return The value they inputted.
      */
-    public void promptDate (String prompt) {
+    public void promptDate() {
 
         String input = "";
         LocalDateTime response;
 
         do {
             try {
-                System.out.print(prompt);
+                System.out.print("""
+                        Please enter the date and time you'd like to reserve
+                        (in the format of yyyy-mm-dd hh:mm, e.g. 2022-12-20 18:45 ):\040""");
                 input = scanner.nextLine().trim();
                 response = LocalDateTime.parse(input, dateTimeFormat);
+                // could cause problems if formats dont match
                 if (!(response.isBefore(LocalDateTime.now()))) {
                     break;
                 }
@@ -135,11 +135,11 @@ public class Reservations {
         String sub = availableTables.get(tableChosen[0]);
         int capacity = Integer.parseInt(sub.substring(sub.indexOf(",") + 1, sub.length()));
         String dateFormatted = date.format(dateTimeFormat);
+        String name = lastUsedAccount.getName();
 
         String csvLine = String.format("%d,%s,%d,%s,%d,%s",
-                account.getRestaurantID(), reservationID
-                , capacity, dateFormatted,
-                tableChosen[1], account.getCustomerID());
+                restaurantID, reservationID, capacity,
+                dateFormatted, tableChosen[1], name);
 
         try (FileWriter fileWrite = new FileWriter(reservations, true)) {
             fileWrite.write("\n" + csvLine);
@@ -147,7 +147,6 @@ public class Reservations {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        options(account);
 
     }
 
@@ -171,7 +170,7 @@ public class Reservations {
                 unavailableTable = false;
                 line = bufferRead.readLine();
                 lineArray = line.split(",");
-                if (Integer.parseInt(lineArray[0]) == (account.getRestaurantID())) {
+                if (Integer.parseInt(lineArray[0]) == restaurantID) {
                     for (int table : notAvailable) {
                         if (Integer.parseInt(lineArray[1]) == table) {
                             unavailableTable = true;
@@ -204,7 +203,7 @@ public class Reservations {
             bufferRead.readLine();
             while (bufferRead.ready()) {
                 line = bufferRead.readLine().split(",");
-                if (Integer.parseInt(line[0]) == (account.getRestaurantID())) {
+                if (Integer.parseInt(line[0]) == restaurantID) {
                     if (isWithinRange(date, LocalDateTime.parse(line[3], dateTimeFormat))) {
                         tablesNotAvailable.add(Integer.parseInt(line[4]));
                     }
@@ -220,7 +219,7 @@ public class Reservations {
     /**
      * Prints out all current reservations for Yum! restaurant.
      */
-    private void printReservations () {
+    public void printReservations () {
 
         String line = "";
         String[] lineArray = new String[0];
@@ -233,7 +232,7 @@ public class Reservations {
             while (bufferRead.ready()) {
                 line = bufferRead.readLine();
                 lineArray = line.split(",");
-                if (lineArray[5].equals(account.getCustomerID())) {
+                if (lineArray[5].equals(lastUsedAccount.getName())) {
                     currentReservations.add(line);
                 }
             }
@@ -243,7 +242,6 @@ public class Reservations {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        options(account);
 
     }
 
@@ -252,32 +250,33 @@ public class Reservations {
      * (NOT WORKING!!! Currently removes all reservations regardless of user, needs to be fixed
      * to only remove reservations made by the current user).
      */
-    private void cancelReservations () {
-
-        String line = "";
-        String[] lineArray = new String[0];
-        ArrayList<String> currentReservations = new ArrayList<>();
-
-        try (FileReader fileRead = new FileReader(reservations);
-             BufferedReader bufferRead = new BufferedReader(fileRead);
-             FileWriter fileWrite = new FileWriter(reservations, false);
-             FileWriter fileWrite2 = new FileWriter(reservations, true);) {
-            while (bufferRead.ready()) {
-                line = bufferRead.readLine();
-                lineArray = line.split(",");
-                if (!lineArray[5].equals(account.getCustomerID())) {
-                    currentReservations.add(line);
+    public void cancelReservations (String name) {
+        ArrayList<String> lines = new ArrayList<String>();
+        String temp = "";
+        try {
+            FileReader fr = new FileReader(reservations);
+            BufferedReader br = new BufferedReader(fr);
+            while (br.ready()) {
+                temp = br.readLine();
+                if (!temp.contains(name)) {
+                    lines.add(temp);
                 }
             }
-            for (int i = 0; i < currentReservations.size(); i++) {
-                fileWrite2.write(currentReservations.get(i));
-                fileWrite2.write("\n");
+            br.close();
+            FileWriter fw1 = new FileWriter(reservations, false);
+            fw1.write("");
+            fw1.flush();
+            fw1.close();
+            FileWriter fw2 = new FileWriter(reservations, true);
+            for (int i = 0; i < lines.size(); i++) {
+                fw2.write(lines.get(i));
+                fw2.write("\n");
             }
-            System.out.println("Reservations cancelled.");
+            fw2.flush();
+            fw2.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        options(account);
 
     }
 

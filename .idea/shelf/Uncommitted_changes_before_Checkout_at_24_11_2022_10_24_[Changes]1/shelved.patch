@@ -1,0 +1,30 @@
+Index: src/main/java/com/cs4013/Customer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cs4013;\r\n//adds and cancels reservation\r\n//view menu\r\n//create order\r\n//views bill\r\n//view tables\r\n\r\nimport java.util.Scanner;\r\n\r\npublic class Customer extends Person{\r\n\r\n    Reservation res = new Reservation();\r\n    Menu men = new Menu(1);\r\n    Customer(String name, int phoneNum) {\r\n        super(name, phoneNum);\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        Customer customer = new Customer(\"John\", 12345);\r\n        customer.addReservation(\"today\",5,1,\"now\",1);\r\n        customer.cancelation(12345);\r\n    }\r\n\r\n    public void addReservation(String date, int guestNum, int restId, String time, int tableId) {\r\n        res.addReservation(getName(), date, getPhoneNum(), guestNum, restId, time, tableId);\r\n    }\r\n\r\n    public void cancelation(int phoneNum) {\r\n        res.cancelation(phoneNum);\r\n    }\r\n\r\n    public void viewMenu() {\r\n        men.toString();\r\n    }\r\n\r\n    public void viewTables(int restId, String time, String date) {\r\n        res.tables(restId, time, date);\r\n    }\r\n\r\n    public Order order() {\r\n        Order order = new Order(men);\r\n        String quit = \"\";\r\n        Scanner scan = new Scanner(System.in);\r\n        String foodString = \"\";\r\n        while (quit!=\"q\" || quit!=\"Q\") {\r\n            System.out.println(\"Please enter the name of the food item you wish to order or Enter q to finish and exit \");\r\n            foodString = scan.nextLine();\r\n            if (foodString == \"q\" || foodString == \"Q\") {\r\n                quit = foodString;\r\n                scan.close();\r\n            } else {\r\n                order.addMeal(foodString);\r\n            }\r\n        }\r\n        return order;\r\n    }\r\n\r\n    public void getBill(String paymentMethod) {\r\n        Bill bill = new Bill(order(), paymentMethod);\r\n        bill.getReceipt();\r\n    }\r\n\r\n    @Override\r\n    public String getName() {\r\n        return super.getName();\r\n    }\r\n    public int getPhoneNum() {\r\n        return super.getPhoneNum();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/cs4013/Customer.java b/src/main/java/com/cs4013/Customer.java
+--- a/src/main/java/com/cs4013/Customer.java	
++++ b/src/main/java/com/cs4013/Customer.java	
+@@ -9,7 +9,7 @@
+ 
+ public class Customer extends Person{
+ 
+-    Reservation res = new Reservation();
++    Reservations res = new Reservations();
+     Menu men = new Menu(1);
+     Customer(String name, int phoneNum) {
+         super(name, phoneNum);
+@@ -21,8 +21,8 @@
+         customer.cancelation(12345);
+     }
+ 
+-    public void addReservation(String date, int guestNum, int restId, String time, int tableId) {
+-        res.addReservation(getName(), date, getPhoneNum(), guestNum, restId, time, tableId);
++    public void addReservation(String date) {
++        res.promptDate();
+     }
+ 
+     public void cancelation(int phoneNum) {

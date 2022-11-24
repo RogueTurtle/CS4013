@@ -1,0 +1,169 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"0d69447a-bd0d-4621-b07b-90ae5f678353\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/cs4013/BillTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/cs4013/BillTest.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/cs4013/README.md\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/cs4013/README.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/cs4013/Reservation.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/cs4013/Reservations.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cs4013/Account.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cs4013/Account.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cs4013/Bill.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cs4013/Bill.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cs4013/Chef.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cs4013/Chef.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cs4013/Customer.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cs4013/Customer.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cs4013/Food.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cs4013/Food.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cs4013/FrontStaff.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cs4013/FrontStaff.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cs4013/Main.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cs4013/Main.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cs4013/Menu.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cs4013/Menu.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cs4013/Order.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cs4013/Order.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cs4013/OrderTest.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cs4013/OrderTest.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cs4013/Reservation.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cs4013/Reservation.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/cs4013/Restaurant.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/cs4013/Restaurant.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"Aaron\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2HjuViWeoNUzX6wgjnWKLr0GU04\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Omini\\OneDrive\\Documents\\Project_A\\CS4013\\src\\main\\java\\com\\cs4013\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"Account\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.cs4013.Account\" />\r\n      <module name=\"project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.cs4013.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Customer\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.cs4013.Customer\" />\r\n      <module name=\"project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.cs4013.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.cs4013.Main\" />\r\n      <module name=\"project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.cs4013.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"MenuTest\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.cs4013.MenuTest\" />\r\n      <module name=\"project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.cs4013.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"OrderTest\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.cs4013.OrderTest\" />\r\n      <module name=\"project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.cs4013.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Account\" />\r\n        <item itemvalue=\"Application.MenuTest\" />\r\n        <item itemvalue=\"Application.Customer\" />\r\n        <item itemvalue=\"Application.OrderTest\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"0d69447a-bd0d-4621-b07b-90ae5f678353\" name=\"Changes\" comment=\"\" />\r\n      <created>1668810846711</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1668810846711</updated>\r\n      <workItem from=\"1668810857132\" duration=\"370000\" />\r\n      <workItem from=\"1668811248532\" duration=\"172000\" />\r\n      <workItem from=\"1668874659100\" duration=\"8552000\" />\r\n      <workItem from=\"1668893895398\" duration=\"9000\" />\r\n      <workItem from=\"1669230012093\" duration=\"5425000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.NumberFormatException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"8\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -6,23 +6,8 @@
+   <component name="ChangeListManager">
+     <list default="true" id="0d69447a-bd0d-4621-b07b-90ae5f678353" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/BillTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/BillTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/README.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Reservations.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Account.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Bill.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Bill.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Chef.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Chef.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Customer.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Food.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Food.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/FrontStaff.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/FrontStaff.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Main.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Menu.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Order.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/OrderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/OrderTest.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Reservation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Reservation.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Restaurant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Restaurant.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Customer.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Reservations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Reservations.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -39,7 +24,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="Aaron" />
++        <entry key="$PROJECT_DIR$" value="main" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -72,6 +57,7 @@
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+   </component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+@@ -146,11 +132,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Application.Main" />
+-        <item itemvalue="Application.Account" />
++        <item itemvalue="Application.OrderTest" />
+         <item itemvalue="Application.MenuTest" />
++        <item itemvalue="Application.Main" />
+         <item itemvalue="Application.Customer" />
+-        <item itemvalue="Application.OrderTest" />
++        <item itemvalue="Application.Account" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -168,6 +154,14 @@
+       <workItem from="1668893895398" duration="9000" />
+       <workItem from="1669230012093" duration="5425000" />
+     </task>
++    <task id="LOCAL-00001" summary="Working on implementing reservations.">
++      <created>1669285089039</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1669285089039</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -183,6 +177,10 @@
+         </entry>
+       </map>
+     </option>
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="Working on implementing reservations." />
++    <option name="LAST_COMMIT_MESSAGE" value="Working on implementing reservations." />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+Index: src/main/java/com/cs4013/Reservations.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.cs4013;\r\n\r\nimport java.io.*;\r\nimport java.io.*;\r\nimport java.time.LocalDateTime;\r\nimport java.time.format.DateTimeFormatter;\r\nimport java.util.ArrayList;\r\nimport java.util.Scanner;\r\nimport java.util.UUID;\r\n\r\npublic class Reservations {\r\n\r\n    private Scanner scanner = new Scanner(System.in);\r\n    private File reservations = new File(\"src/storage/reservations.csv\");\r\n    private File reservationReset = new File(\"src/storage/reservationReset.csv\");\r\n    private File tables = new File(\"src/storage/tables.csv\");\r\n    private DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern(\"uuuu-MM-dd HH:mm\");\r\n    private Account account;\r\n\r\n    /**\r\n     * Constructor for Reservations\r\n     */\r\n    public Reservations () {\r\n    }\r\n\r\n    /** Prompts the user with a multiple choice question.\r\n     * Validates whether their answer is acceptable.\r\n     *\r\n     * @param prompt A question to prompt the user.\r\n     * @param min Minimum value to validate against.\r\n     * @param max Maximum value to validate against.\r\n     * @return The value for their selected option.\r\n     */\r\n    private int prompt (String prompt, int min, int max) {\r\n\r\n\r\n        String input = \"\";\r\n        int response = 0;\r\n\r\n        do {\r\n            try {\r\n                System.out.print(prompt);\r\n                input = scanner.nextLine().trim();\r\n                response = Integer.parseInt(input);\r\n                if (response >= min || response <= max) {\r\n                    return response;\r\n                }\r\n            } catch (Exception e) {\r\n                System.out.println(\"--- Invalid value, please try again. ---\");\r\n            }\r\n        } while (true);\r\n\r\n    }\r\n\r\n    /** Prompts the user for a date value in the format \"uuuu-MM-dd HH:mm\".\r\n     *\r\n     * @param prompt A question to prompt the user.\r\n     * @return The value they inputted.\r\n     */\r\n    public void promptDate (String prompt) {\r\n\r\n        String input = \"\";\r\n        LocalDateTime response;\r\n\r\n        do {\r\n            try {\r\n                System.out.print(prompt);\r\n                input = scanner.nextLine().trim();\r\n                response = LocalDateTime.parse(input, dateTimeFormat);\r\n                if (!(response.isBefore(LocalDateTime.now()))) {\r\n                    break;\r\n                }\r\n                System.out.println(\"--- That time has passed! Please try again. ---\");\r\n            } catch (Exception e) {\r\n                System.out.println(\"--- Invalid value, please try again. ---\");\r\n            }\r\n        } while (true);\r\n\r\n        printAvailableTables(response);\r\n    }\r\n\r\n    /** Prints out any available tables within a 2-hour window of a certain time.\r\n     *\r\n     * @param date Date is used to check for tables that are reserved.\r\n     */\r\n    private void printAvailableTables (LocalDateTime date) {\r\n\r\n        System.out.println(\"\"\"\r\n                Available tables:\r\n                Table Number | Capacity\"\"\");\r\n        ArrayList<String> availableTables = checkAvailableTables(date);\r\n        for (String s : availableTables) {\r\n            System.out.println(s);\r\n        }\r\n        reserveTable(availableTables, date);\r\n\r\n    }\r\n\r\n    /** Choose a table to reserve.\r\n     *\r\n     * @param availableTables Tables that are available to reserve.\r\n     * @return Int array containing the row where the table number and capacity are located.\r\n     */\r\n    private int[] chooseTable(ArrayList<String> availableTables) {\r\n\r\n        String firstLine = availableTables.get(0);\r\n        String lastLine = availableTables.get(availableTables.size() - 1);\r\n        int tableChosen = 0;\r\n\r\n        do {\r\n            int i = 0;\r\n            tableChosen = prompt(\"Please enter the Table Number of the table you'd like to reserve: \",\r\n                    Integer.parseInt(firstLine.substring(0, firstLine.indexOf(\",\"))),\r\n                    Integer.parseInt(lastLine.substring(0, lastLine.indexOf(\",\"))));\r\n            for (String s : availableTables) {\r\n                if (Integer.parseInt(s.substring(0, s.indexOf(\",\"))) == tableChosen) {\r\n                    return new int[]{ i, tableChosen };\r\n                }\r\n                i++;\r\n            }\r\n            System.out.println(\"--- Invalid value, please try again. ---\");\r\n        } while (true);\r\n\r\n    }\r\n\r\n    /** Reserves a table.\r\n     *\r\n     * @param availableTables Tables that are available to reserve.\r\n     * @param date Date/Time that the table will be reserved for.\r\n     */\r\n    private void reserveTable(ArrayList<String> availableTables, LocalDateTime date) {\r\n\r\n        String reservationID = UUID.randomUUID().toString();\r\n        int[] tableChosen = chooseTable(availableTables);\r\n        String sub = availableTables.get(tableChosen[0]);\r\n        int capacity = Integer.parseInt(sub.substring(sub.indexOf(\",\") + 1, sub.length()));\r\n        String dateFormatted = date.format(dateTimeFormat);\r\n\r\n        String csvLine = String.format(\"%d,%s,%d,%s,%d,%s\",\r\n                account.getRestaurantID(), reservationID\r\n                , capacity, dateFormatted,\r\n                tableChosen[1], account.getCustomerID());\r\n\r\n        try (FileWriter fileWrite = new FileWriter(reservations, true)) {\r\n            fileWrite.write(\"\\n\" + csvLine);\r\n            System.out.println(\"Your reservation has been made!\");\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n        options(account);\r\n\r\n    }\r\n\r\n    /** Checks for tables that are not reserved.\r\n     *\r\n     * @param date Date is used to check for tables that are reserved.\r\n     * @return String arraylist containing information on non-reserved tables.\r\n     */\r\n    private ArrayList<String> checkAvailableTables (LocalDateTime date) {\r\n\r\n        ArrayList<Integer> notAvailable = checkUnavailableTables(date);\r\n        String line = \"\";\r\n        String[] lineArray = new String[0];\r\n        ArrayList<String> availableTables = new ArrayList<>();\r\n        boolean unavailableTable;\r\n\r\n        try(FileReader fileRead = new FileReader(tables);\r\n            BufferedReader bufferRead = new BufferedReader(fileRead);) {\r\n            bufferRead.readLine();\r\n            while (bufferRead.ready()) {\r\n                unavailableTable = false;\r\n                line = bufferRead.readLine();\r\n                lineArray = line.split(\",\");\r\n                if (Integer.parseInt(lineArray[0]) == (account.getRestaurantID())) {\r\n                    for (int table : notAvailable) {\r\n                        if (Integer.parseInt(lineArray[1]) == table) {\r\n                            unavailableTable = true;\r\n                        }\r\n                    }\r\n                    if (!unavailableTable) {\r\n                        availableTables.add(line.substring(line.indexOf(\",\") + 1, line.length()));\r\n                    }\r\n                }\r\n            }\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return availableTables;\r\n\r\n    }\r\n\r\n    /** Checks for unavailable tables.\r\n     *\r\n     * @param date Date is used to check for tables that are reserved.\r\n     * @return Integer arraylist containing table numbers of unavailable tables.\r\n     */\r\n    private ArrayList<Integer> checkUnavailableTables (LocalDateTime date) {\r\n\r\n        String[] line = new String[0];\r\n        ArrayList<Integer> tablesNotAvailable = new ArrayList<>();\r\n\r\n        try (FileReader fileRead = new FileReader(reservations);\r\n             BufferedReader bufferRead = new BufferedReader(fileRead);) {\r\n            bufferRead.readLine();\r\n            while (bufferRead.ready()) {\r\n                line = bufferRead.readLine().split(\",\");\r\n                if (Integer.parseInt(line[0]) == (account.getRestaurantID())) {\r\n                    if (isWithinRange(date, LocalDateTime.parse(line[3], dateTimeFormat))) {\r\n                        tablesNotAvailable.add(Integer.parseInt(line[4]));\r\n                    }\r\n                }\r\n            }\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return tablesNotAvailable;\r\n\r\n    }\r\n\r\n    /**\r\n     * Prints out all current reservations for Yum! restaurant.\r\n     */\r\n    private void printReservations () {\r\n\r\n        String line = \"\";\r\n        String[] lineArray = new String[0];\r\n        ArrayList<String> currentReservations = new ArrayList<>();\r\n        System.out.println(\"--- Your reservations: ---\");\r\n\r\n        try (FileReader fileRead = new FileReader(reservations);\r\n             BufferedReader bufferRead = new BufferedReader(fileRead);) {\r\n            bufferRead.readLine();\r\n            while (bufferRead.ready()) {\r\n                line = bufferRead.readLine();\r\n                lineArray = line.split(\",\");\r\n                if (lineArray[5].equals(account.getCustomerID())) {\r\n                    currentReservations.add(line);\r\n                }\r\n            }\r\n            for (String s : currentReservations) {\r\n                System.out.println(s);\r\n            }\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n        options(account);\r\n\r\n    }\r\n\r\n    /**\r\n     * Cancels all of the user's current reservations.\r\n     * (NOT WORKING!!! Currently removes all reservations regardless of user, needs to be fixed\r\n     * to only remove reservations made by the current user).\r\n     */\r\n    private void cancelReservations () {\r\n\r\n        String line = \"\";\r\n        String[] lineArray = new String[0];\r\n        ArrayList<String> currentReservations = new ArrayList<>();\r\n\r\n        try (FileReader fileRead = new FileReader(reservations);\r\n             BufferedReader bufferRead = new BufferedReader(fileRead);\r\n             FileWriter fileWrite = new FileWriter(reservations, false);\r\n             FileWriter fileWrite2 = new FileWriter(reservations, true);) {\r\n            while (bufferRead.ready()) {\r\n                line = bufferRead.readLine();\r\n                lineArray = line.split(\",\");\r\n                if (!lineArray[5].equals(account.getCustomerID())) {\r\n                    currentReservations.add(line);\r\n                }\r\n            }\r\n            for (int i = 0; i < currentReservations.size(); i++) {\r\n                fileWrite2.write(currentReservations.get(i));\r\n                fileWrite2.write(\"\\n\");\r\n            }\r\n            System.out.println(\"Reservations cancelled.\");\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n        options(account);\r\n\r\n    }\r\n\r\n    /** Checks whether a date is within 2-hours of another reserved date.\r\n     *\r\n     * @param wantedDate The date the user wants to reserve for.\r\n     * @param reservedDate The date currently reserved.\r\n     * @return True or false.\r\n     */\r\n    public boolean isWithinRange(LocalDateTime wantedDate, LocalDateTime reservedDate) {\r\n        LocalDateTime reservedDateMinusWindow = reservedDate.minusHours(2);\r\n        LocalDateTime reservedDatePlusWindow = reservedDate.plusHours(2);\r\n        return (wantedDate.isEqual(reservedDateMinusWindow) || wantedDate.isEqual(reservedDatePlusWindow))\r\n                || (wantedDate.isBefore(reservedDatePlusWindow) && wantedDate.isAfter(reservedDateMinusWindow));\r\n\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/com/cs4013/Reservations.java b/src/main/java/com/cs4013/Reservations.java
+--- a/src/main/java/com/cs4013/Reservations.java	
++++ b/src/main/java/com/cs4013/Reservations.java	
+@@ -11,9 +11,8 @@
+ public class Reservations {
+ 
+     private Scanner scanner = new Scanner(System.in);
+-    private File reservations = new File("src/storage/reservations.csv");
+-    private File reservationReset = new File("src/storage/reservationReset.csv");
+-    private File tables = new File("src/storage/tables.csv");
++    private File reservations = new File("src/storage/Reservations.csv");
++    private File tables = new File("src/storage/Tables.csv");
+     private DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm");
+     private Account account;
+ 
+@@ -252,32 +251,34 @@
+      * (NOT WORKING!!! Currently removes all reservations regardless of user, needs to be fixed
+      * to only remove reservations made by the current user).
+      */
+-    private void cancelReservations () {
+-
+-        String line = "";
+-        String[] lineArray = new String[0];
+-        ArrayList<String> currentReservations = new ArrayList<>();
+-
+-        try (FileReader fileRead = new FileReader(reservations);
+-             BufferedReader bufferRead = new BufferedReader(fileRead);
+-             FileWriter fileWrite = new FileWriter(reservations, false);
+-             FileWriter fileWrite2 = new FileWriter(reservations, true);) {
+-            while (bufferRead.ready()) {
+-                line = bufferRead.readLine();
+-                lineArray = line.split(",");
+-                if (!lineArray[5].equals(account.getCustomerID())) {
+-                    currentReservations.add(line);
++    public void cancelReservationsn(int phoneNum) {
++        ArrayList<String> lines = new ArrayList<String>();
++        String temp = "";
++        String phoneString = Integer.toString(phoneNum);
++        try {
++            FileReader fr = new FileReader(reservations);
++            BufferedReader br = new BufferedReader(fr);
++            while (br.ready()) {
++                temp = br.readLine();
++                if (!temp.contains(phoneString)) {
++                    lines.add(temp);
+                 }
+             }
+-            for (int i = 0; i < currentReservations.size(); i++) {
+-                fileWrite2.write(currentReservations.get(i));
+-                fileWrite2.write("\n");
++            br.close();
++            FileWriter fw1 = new FileWriter(reservations, false);
++            fw1.write("");
++            fw1.flush();
++            fw1.close();
++            FileWriter fw2 = new FileWriter(reservations, true);
++            for (String line : lines) {
++                fw2.write(line);
++                fw2.write("\n");
+             }
+-            System.out.println("Reservations cancelled.");
++            fw2.flush();
++            fw2.close();
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+-        options(account);
+ 
+     }
+ 

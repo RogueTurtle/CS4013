@@ -1,2 +1,1 @@
-RestaurantId,tableNo,name,phone number,numPeople,date,time
-1,1,John,12345,5,today,now,
+RestaurantID, ReservationID, Capacity, Date/Time, TableNo., Username
