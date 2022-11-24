@@ -141,11 +141,14 @@ public class Restaurant {
             switch (response) {
                 case (1): {
                     Reservation res = new Reservation();
-                    System.out.print(res.showReservation());
+                    System.out.print(res.showReservation() + "\n");
+                    mainMenu();
+                    break;
                 }
                 case (2):{
                     System.out.println(menu);
                     mainMenu();
+                    break;
                 }
                 case (3):{
                     if (lastUsedAccount.getLevel() >= 3) {
