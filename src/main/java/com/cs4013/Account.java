@@ -39,6 +39,7 @@ public class Account {
                     this.name = name;
                     this.password = password;
                     this.level = Integer.parseInt(logins[2]);
+                   System.out.println("Login Successful!");
                     break; //or could add "&& !loggedIn" to while loop
                }
                else {
@@ -46,7 +47,7 @@ public class Account {
                }
            }
            if(!loggedIn) {
-               System.out.println("Error, incorrect username or password");
+               System.out.println("Error: incorrect username or password");
            }
            br.close();
        }
@@ -241,6 +242,24 @@ public class Account {
             newFile.delete();
         } catch (Exception e) {
 
+        }
+    }
+
+    public void settingsMenu() {
+        if(loggedIn) {
+            System.out.printf("""
+                Welcome %s! What would you like to do?
+                (1) Reservations
+                (2) Check menu
+                (3) Admin (requires authority)
+                >\040""");
+            Scanner scan = new Scanner(System.in);
+            if(scan.nextInt() == 1) {
+                //Show reservations
+            }
+            if(scan.nextInt() == 2) {
+
+            }
         }
     }
 
