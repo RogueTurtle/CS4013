@@ -10,7 +10,7 @@ public class Restaurant {
     private Reservation reservation;
     private ArrayList<Chef> chefs;
     private Guests[] guests; //Needed or nah?
-    private Customer[] customers;
+    //private Customer[] customers;
     private ArrayList<Order> orders;
     private ArrayList<FrontStaff> frontStaffs;
     private ArrayList<Owner> owners;
