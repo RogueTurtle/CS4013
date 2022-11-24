@@ -5,28 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d69447a-bd0d-4621-b07b-90ae5f678353" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/FrontStaff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/FrontStaff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storage/Login.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/Login.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storage/Menu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/Menu.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Bill.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Bill.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Chef.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Chef.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Food.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Food.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/FrontStaff.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/FrontStaff.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Guests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Guests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/OrderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/OrderTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Reservation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Reservation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Staff.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Staff.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +57,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">

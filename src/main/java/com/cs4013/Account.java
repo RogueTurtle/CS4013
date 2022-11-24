@@ -9,7 +9,7 @@ public class Account {
    private String name;
    private String password;
    private boolean loggedIn = false;
-   private int level; //0 = guest, 1 = customer/user, 2 = staff, 3 = manager, 4 = owner
+   private int level; //0 = guest, 1 = customer/user, 2 = waiter, 3 = frontStaff, 4 = chef, 5. manager, 6. owner
 
     public Account() {
         loginFile = new File("src/storage/Login.csv");
@@ -108,9 +108,9 @@ public class Account {
     }
 
     public void setLevel(Account account, int level) {
-        //If owner(level 4)
+        //If owner(level 6)
 
-        if(isLoggedIn() && level == 4) {
+        if(isLoggedIn() && level == 6) {
 
             try {
                 String line = "";
@@ -191,7 +191,7 @@ public class Account {
     }
 
     public void deleteAccount(String username) {
-        if (level == 4 || name.equalsIgnoreCase(username)) {
+        if (level == 6 || name.equalsIgnoreCase(username)) {
             deleteCSV(username);
         }
     }
@@ -245,22 +245,16 @@ public class Account {
         }
     }
 
-    public void settingsMenu() {
-        if(loggedIn) {
-            System.out.printf("""
-                Welcome %s! What would you like to do?
-                (1) Reservations
-                (2) Check menu
-                (3) Admin (requires authority)
-                >\040""");
-            Scanner scan = new Scanner(System.in);
-            if(scan.nextInt() == 1) {
-                //Show reservations
-            }
-            if(scan.nextInt() == 2) {
-
-            }
-        }
+    public int getLevel() {
+        return level;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Username: " + name;
+    }
 }
