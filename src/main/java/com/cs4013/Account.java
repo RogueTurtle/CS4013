@@ -94,6 +94,7 @@ public class Account {
                this.name = name;
                this.password = password;
                level = 1;
+               System.out.println("Account created! Please log-in.");
            }
            br.close();
            out.close();
