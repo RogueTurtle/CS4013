@@ -6,14 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="0d69447a-bd0d-4621-b07b-90ae5f678353" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Chef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Chef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/FrontStaff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/FrontStaff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/OrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/BillTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/BillTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Reservations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs4013/Restaurant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Bill.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Bill.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Chef.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Chef.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Customer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Food.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Food.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/FrontStaff.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/FrontStaff.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/MenuTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/OrderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/OrderTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Reservation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Reservation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cs4013/Restaurant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cs4013/Restaurant.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +37,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Aaron" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
