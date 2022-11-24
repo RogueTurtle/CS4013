@@ -24,7 +24,7 @@ public class Order {
     public Order(Menu menu) {
         this.menu = menu;
         totalPrice = 0;
-        status = "CREATED";
+        status = "WAITING";
     }
 
     /**
@@ -48,17 +48,17 @@ public class Order {
     //Trying to make changing statuses flexible
     public void changeStatus(String status) {
         String newStatus = status.toUpperCase();
-        if(newStatus.contains("CREATE") || newStatus.contains("MADE") || newStatus.contains("ORDERED")) {
-            this.status = "CREATED";
+        if(newStatus.contains("CREATED") || newStatus.contains("MADE") || newStatus.contains("FIN") || newStatus.contains("COMPLETE")) {
+            this.status = "FINISHED";
         }
-        else if(newStatus.contains("WAIT") || newStatus.contains("MADE") || newStatus.contains("TRANSIT")) {
+        else if(newStatus.contains("WAIT") || newStatus.contains("ORDERED") || newStatus.contains("TRANSIT")) {
             this.status = "WAITING";
         }
         else if(newStatus.contains("CANCEL") || newStatus.contains("STOP") || newStatus.contains("ABORT")) {
             this.status = "CANCELLED";
         }
         else {
-            throw new RuntimeException("Error, status not valid");
+            System.out.println("Error:");;
         }
     }
 
@@ -78,6 +78,6 @@ public class Order {
     public String toString() {
         return "Order: " + foodsOrdered + "\n" +
                 "Status: " + status + "\n" +
-                "Total Price: " + totalPrice;
+                "Total Price: " + totalPrice + "\n";
     }
 }

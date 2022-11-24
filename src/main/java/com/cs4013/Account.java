@@ -315,4 +315,8 @@ public class Account {
     public String toString() {
         return "Username: " + name;
     }
+
+    public void logOut() {
+        loggedIn = false;
+    }
 }
