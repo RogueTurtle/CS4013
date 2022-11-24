@@ -155,8 +155,7 @@ public class Restaurant {
      */
 
     public void adminMenu() {
-        int response;
-            response = mainPrompt("""
+        int response = mainPrompt("""
                 What would you like to do?
                 (1) Promote/Demote a user
                 (2) Create an order
@@ -165,43 +164,42 @@ public class Restaurant {
                 (5) Generate income statistics
                 (6) Go back
                 >""", 1, 6);
-            switch (response) {
-                case (1): {
-                    // Promote a user (OWNER only)
-                    if (lastUsedAccount.getLevel() == 6) {
-                        System.out.println("Please input the name of the account: ");
-                        String username = scanner.next();
-                        boolean levelChosen = false;
-                        for(Account account : accounts) {
-                            if(account.getName().equalsIgnoreCase(username)) {
-                                while(!levelChosen) {
-                                    System.out.println("Please input the new level to be granted to " + username);
-                                    int level = scanner.nextInt();
-                                    if(level < 6 && level >= 0) {
-                                        lastUsedAccount.setLevel(account, level);
-                                        levelChosen = true;
-                                    }
-                                    else {
-                                        System.out.println("Invalid level");
-                                        System.out.printf("""
-                Level 1: Customer
-                Level 2: Waiter
-                Level 3: Front Staff
-                Level 4: Chef
-                Level 5: Manager
-                Level 6: Owner
-                """);
-                                    }
+        switch (response) {
+            case (1): {
+                // Promote a user (OWNER only)
+                if (lastUsedAccount.getLevel() == 6) {
+                    System.out.println("Please input the name of the account: ");
+                    String username = scanner.next();
+                    boolean levelChosen = false;
+                    for(Account account : accounts) {
+                        if(account.getName().equalsIgnoreCase(username)) {
+                            while(!levelChosen) {
+                                System.out.println("Please input the new level to be granted to " + username);
+                                int level = scanner.nextInt();
+                                if(level < 6 && level >= 0) {
+                                    lastUsedAccount.setLevel(account, level);
+                                    levelChosen = true;
+                                } else {
+                                    System.out.println("Invalid level");
+                                    System.out.printf("""
+                                        Level 1: Customer
+                                        Level 2: Waiter
+                                        Level 3: Front Staff
+                                        Level 4: Chef
+                                        Level 5: Manager
+                                        Level 6: Owner
+                                        """);
                                 }
                             }
-                            else {
-                                System.out.println("No account called " + username);
-                            }
+                        }
+                        else {
+                            System.out.println("No account called " + username);
                         }
                     }
-                    adminMenu();
-                    break;
                 }
+                adminMenu();
+                break;
+            }
                 case (2): {
                     // Create an order (FRONT_STAFF or OWNER)
                     Order order = new Order(menu);
