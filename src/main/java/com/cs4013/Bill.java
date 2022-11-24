@@ -10,13 +10,7 @@ import java.util.Scanner;
 //Author Stephen Walsh :21334234
 
 public class Bill {
-    /***
-     *
-     Scanner scan = new Scanner(System.in); This will prob have to go into the main class if we want to incorporate tips
-     System.out.println("Please enter tip amount: ")
-     double tipAmount = scan.nextDouble();//Optional Tip
-     **/
-
+    
     private String receipt;
     private double totalPrice;
     private String payMethod;
@@ -28,12 +22,18 @@ public class Bill {
         return totalPrice;
     }
 
+    /**
+     * creates a bill with a pay method and an order in mind
+     * @param order coming from the order class will contain the price
+     * @param payMethod either cash or card payment type
+     */
     public Bill(Order order, String payMethod) {
 
         this.order = order;
         this.payMethod = payMethod;
         totalPrice = order.getTotalPrice();
     }
+
 
 
     public String getReceipt() {
@@ -44,6 +44,10 @@ public class Bill {
         this.receipt = receipt;
     }
 
+    /**
+     * method for a customer paying for their order
+     * @param amountPaid The amount of Money the customer has given us before anything else
+     */
     public void payment(Double amountPaid) {
         Scanner scan = new Scanner(System.in);
         System.out.println("DO you want to add a tip? y/n: ");
@@ -74,6 +78,10 @@ public class Bill {
 
     }
 
+    /**
+     * Stores data in csv file
+     * @param price Cost of orders
+     */
     public void income(double price) {
         File income = new File("src/storage/RunningIncome.csv");
         String incomeString = "";
