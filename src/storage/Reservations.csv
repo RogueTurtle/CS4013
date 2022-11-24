@@ -1,6 +1,3 @@
 RestaurantId,tableNo,name,phone number,numPeople,date,time
 1,4e8c68f7-d846-4520-ad85-4a43ff564ca7,4,2022-12-20 18:00,1,aaron
 1,92d6ea27-0da6-4514-a63f-0a5dc930fc96,2,2022-12-20 18:00,2,aaron
-1,1,ayjmed,837334,3,29/10/2003,12;45,
-1,1,ahmed,384,3,29/10/03,12:24,
-1,1,john,12345,3,today,now,
