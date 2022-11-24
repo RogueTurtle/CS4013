@@ -137,7 +137,8 @@ public class Restaurant {
                 (1) Reservations
                 (2) Check menu
                 (3) Admin (requires authority)
-                >""",1 , 3);
+                (4) Log Out
+                >""",1 , 4);
             switch (response) {
                 case (1): {
                     //Show reservations
@@ -154,6 +155,10 @@ public class Restaurant {
                         System.out.println("--- You do not have permission. ---");
                         mainMenu();
                     }
+                }
+                case (4):{
+                    lastUsedAccount.logOut();
+                    restaurantLoginPage();
                 }
             }
         }
@@ -224,6 +229,7 @@ public class Restaurant {
                                 String[] foods = line.split(",");
                                 fs.createOrder(order, foods);
                                 System.out.println(order);
+                                orders.add(order);
                             }
                         }
                     }
@@ -243,18 +249,20 @@ public class Restaurant {
                                 if(orders.isEmpty()) {
                                     System.out.println("There are currently no orders");
                                 }
-                                for(Order order : orders) {
-                                    System.out.println(orders.indexOf(order) + ": " + order);
-                                }
-                                System.out.println("What order would you like to change?");
-                                int orderNumber = scanner.nextInt();
-                                if(orders.get(orderNumber) != null) {
-                                    System.out.println("What is the status of the order?");
-                                    String status = scanner.next();
-                                    orders.get(orderNumber).changeStatus(status);
-                                }
                                 else {
-                                    System.out.println("There is no order with this order number!");
+                                    for(Order order : orders) {
+                                        System.out.println(orders.indexOf(order) + ": " + order);
+                                    }
+                                    System.out.println("What order would you like to change?");
+                                    int orderNumber = scanner.nextInt();
+                                    if(orders.get(orderNumber) != null) {
+                                        System.out.println("What is the status of the order?");
+                                        String status = scanner.next();
+                                        orders.get(orderNumber).changeStatus(status);
+                                    }
+                                    else {
+                                        System.out.println("There is no order with this order number!");
+                                    }
                                 }
                             }
                         }
