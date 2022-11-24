@@ -205,7 +205,7 @@ public class Menu {
                 "Starters: " + starters + "\n" +
                 "Soups: " + soups +"\n" +
                 "Main Course: " + main_course +"\n" +
-                "Dessert: " + dessert;
+                "Dessert: " + dessert + "\n";
     }
 
     
