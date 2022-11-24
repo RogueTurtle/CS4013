@@ -18,6 +18,10 @@ public class Account {
         loginFile = new File("src/storage/Login.csv");
     }
 
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         Account account = new Account();
         Account account2 = new Account();
@@ -107,6 +111,10 @@ public class Account {
        }
    }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isLoggedIn() {
         return loggedIn;
     }
@@ -163,6 +171,11 @@ public class Account {
         }
     }
 
+    
+    /** 
+     * @param editTerm
+     * @param newTerm
+     */
     private void editCSV(String editTerm, String newTerm) {
         String tempFilePath = "src/storage/loginTemp.csv";
         File newFile = new File(tempFilePath);
@@ -215,12 +228,20 @@ public class Account {
         }
     }
 
+    
+    /** 
+     * @param username
+     */
     public void deleteAccount(String username) {
         if (level == 6 || name.equalsIgnoreCase(username)) {
             deleteCSV(username);
         }
     }
 
+    
+    /** 
+     * @param username
+     */
     private void deleteCSV(String username) {
         String tempFilePath = "src/storage/loginTemp.csv";
         File newFile = new File(tempFilePath);
@@ -270,14 +291,26 @@ public class Account {
         }
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getLevel() {
         return level;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getName() {
         return name;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "Username: " + name;

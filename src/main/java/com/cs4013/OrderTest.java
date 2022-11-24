@@ -2,6 +2,10 @@ package com.cs4013;
 
 public class OrderTest {
 
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
 
         Menu menu = new Menu(1);

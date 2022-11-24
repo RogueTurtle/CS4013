@@ -15,16 +15,27 @@ public class Customer extends Person{
         super(name, phoneNum);
     }
 
-    public static void main(String[] args) {
-        Customer customer = new Customer("John", 12345);
-        customer.addReservation("today",5,1,"now",1);
-        customer.cancelation(12345);
-    }
+    
+    /** 
+     * @param args
+     */
 
+    
+    /** 
+     * @param date
+     * @param guestNum
+     * @param restId
+     * @param time
+     * @param tableId
+     */
     public void addReservation(String date, int guestNum, int restId, String time, int tableId) {
         res.addReservation(getName(), date, getPhoneNum(), guestNum, restId, time, tableId);
     }
 
+    
+    /** 
+     * @param phoneNum
+     */
     public void cancelation(int phoneNum) {
         res.cancelation(phoneNum);
     }
@@ -33,10 +44,20 @@ public class Customer extends Person{
         men.toString();
     }
 
+    
+    /** 
+     * @param restId
+     * @param time
+     * @param date
+     */
     public void viewTables(int restId, String time, String date) {
         res.tables(restId, time, date);
     }
 
+    
+    /** 
+     * @return Order
+     */
     public Order order() {
         Order order = new Order(men);
         String quit = "";
@@ -55,15 +76,27 @@ public class Customer extends Person{
         return order;
     }
 
+    
+    /** 
+     * @param paymentMethod
+     */
     public void getBill(String paymentMethod) {
         Bill bill = new Bill(order(), paymentMethod);
         bill.getReceipt();
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String getName() {
         return super.getName();
     }
+    
+    /** 
+     * @return int
+     */
     public int getPhoneNum() {
         return super.getPhoneNum();
     }

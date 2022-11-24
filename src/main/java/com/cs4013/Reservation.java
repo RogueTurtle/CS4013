@@ -11,6 +11,18 @@ public class Reservation {
     File tableFile = new File("src/storage/Tables.csv");
 
     ArrayList<Guests> guestList = new ArrayList<Guests>();
+    
+    /** 
+     * @param name
+     * @param date
+     * @param phoneNum
+     * @param guestNum
+     * @param restId
+     * @param time
+     * @param tableId
+     * 
+     * creates new guest object and writes it to a csv file
+     */
     public void addReservation(String name, String date, int phoneNum, int guestNum, int restId, String time, int tableId) {
         Guests guests = new Guests(name, date, phoneNum, guestNum, restId,time,tableId);
         guestList.add(guests);
@@ -29,6 +41,12 @@ public class Reservation {
         } 
     }
 
+    
+    /** 
+     * @param phoneNum
+     * adds every line from the file into an array but skips the line containing the phone number of the 
+     * reservation to be cancelled
+     */
     public void cancelation(int phoneNum) {
         ArrayList<String> lines = new ArrayList<String>();
         String temp = "";
@@ -60,6 +78,15 @@ public class Reservation {
 
     }
 
+    
+    /** 
+     * @param restId
+     * @param time
+     * @param date
+     * @return String
+     * 
+     * allows the user to view tables that arent reserved
+     */
     public String tables(int restId, String time, String date) {
         String line = "";
         ArrayList<String> tableLines = new ArrayList<String>();
