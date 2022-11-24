@@ -173,8 +173,7 @@ public class Restaurant {
                 (2) Create an order
                 (3) Change order status
                 (4) Reserve a table
-                (5) Generate income statistics
-                (6) Go back
+                (5) Go back
                 >""", 1, 5);
         switch (response) {
             case (1): {
@@ -273,15 +272,15 @@ public class Restaurant {
                     System.out.println("Please enter table number: ");
                     int tableNo = scan.nextInt();
                     System.out.println("Please enter name for reservation: ");
-                    String name = scan.nextLine();
+                    String name = scan.next();
                     System.out.println("Please Enter phone number for reservation: ");
                     int number = scan.nextInt();
                     System.out.println("Please enter the number of people in attendance: ");
                     int noPeople = scan.nextInt();
                     System.out.println("Please Enter the date of the reservation (dd/mm/yy): ");
-                    String date = scan.nextLine();
+                    String date = scan.next();
                     System.out.print("Please enter the time for reservation (e.g 12:45): ");
-                    String time = scan.nextLine();
+                    String time = scan.next();
                     scan.close();
 
                     Reservation res = new Reservation();
