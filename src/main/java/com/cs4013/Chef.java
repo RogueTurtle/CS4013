@@ -14,4 +14,8 @@ public class Chef extends Staff{
     public int getPhoneNum() {
         return super.getPhoneNum();
     }
+
+    public void changeOrderStatus(String status, Order order) {
+        order.changeStatus(status);
+    }
 }
