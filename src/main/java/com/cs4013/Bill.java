@@ -84,7 +84,7 @@ public class Bill {
             System.out.println("Transaction Verified");
         } else {System.out.println("Void Transaction");}
 
-        
+        income(price);
     }
 
     

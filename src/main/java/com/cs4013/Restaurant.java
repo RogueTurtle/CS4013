@@ -248,7 +248,23 @@ public class Restaurant {
                     break;
                 }
                 case (4): {
-                    // Reserve a table (FRONT or OWNER or CUSTOMER)
+                    Scanner scan = new  Scanner(System.in);
+                    System.out.println("Please enter table number: ");
+                    int tableNo = scan.nextInt();
+                    System.out.println("Please enter name for reservation: ");
+                    String name = scan.nextLine();
+                    System.out.println("Please Enter phone number for reservation: ");
+                    int number = scan.nextInt();
+                    System.out.println("Please enter the number of people in attendance: ");
+                    int noPeople = scan.nextInt();
+                    System.out.println("Please Enter the date of the reservation (dd/mm/yy): ");
+                    String date = scan.nextLine();
+                    System.out.print("Please enter the time for reservation (e.g 12:45): ");
+                    String time = scan.nextLine();
+                    scan.close();
+
+                    Reservation res = new Reservation();
+                    res.addReservation(name, date, number, noPeople, restaurantId, time, tableNo);
                     adminMenu();
                     break;
                 }
