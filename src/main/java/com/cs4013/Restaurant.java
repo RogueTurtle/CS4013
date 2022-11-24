@@ -10,7 +10,7 @@ public class Restaurant {
     private Reservation reservation;
     private ArrayList<Chef> chefs;
     private Guests[] guests; //Needed or nah?
-    private Customer[] customers;
+    private ArrayList<Customer> customers;
     private ArrayList<Order> orders;
     private ArrayList<FrontStaff> frontStaffs;
     private ArrayList<Owner> owners;
@@ -32,6 +32,7 @@ public class Restaurant {
         frontStaffs = new ArrayList<>();
         lastUsedAccount = new Account();
         owners = new ArrayList<>();
+        customers = new ArrayList<>();
     }
 
     /**
@@ -250,15 +251,17 @@ public class Restaurant {
                                     System.out.println("There are currently no orders");
                                 }
                                 else {
+                                    System.out.println("What order would you like to change?");
                                     for(Order order : orders) {
                                         System.out.println(orders.indexOf(order) + ": " + order);
                                     }
-                                    System.out.println("What order would you like to change?");
                                     int orderNumber = scanner.nextInt();
                                     if(orders.get(orderNumber) != null) {
                                         System.out.println("What is the status of the order?");
-                                        String status = scanner.next();
+                                        Scanner scan = new Scanner(System.in);
+                                        String status = scan.next();
                                         orders.get(orderNumber).changeStatus(status);
+                                        System.out.println(orders.get(orderNumber));
                                     }
                                     else {
                                         System.out.println("There is no order with this order number!");

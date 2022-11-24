@@ -58,7 +58,7 @@ public class Order {
             this.status = "CANCELLED";
         }
         else {
-            throw new RuntimeException("Error, status not valid");
+            System.out.println("Error:");;
         }
     }
 
