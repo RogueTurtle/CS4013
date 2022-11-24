@@ -141,7 +141,7 @@ public class Restaurant {
             switch (response) {
                 case (1): {
                     Reservation res = new Reservation();
-                    res.showReservation();
+                    System.out.print(res.showReservation());
                 }
                 case (2):{
                     System.out.println(menu);
